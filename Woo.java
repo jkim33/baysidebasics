@@ -3,8 +3,8 @@ import cs1.Keyboard;
 public class Woo {
     
     public static void main (String[]args) {
-	Human human = new Human();
-	BeginnerAI AI = new BeginnerAI();
+	Player human = new Human();
+	Player AI = new BeginnerAI();
 	Boolean a = true;
 	int row = 0;
 	int col = 0;

@@ -1,4 +1,4 @@
-public class Player {
+public abstract class Player {
 
     //instance variables
     public String[][] _grid = new String[10][10];
@@ -105,4 +105,7 @@ public class Player {
 	}
 	return true;
     }
+
+    //abstract methods
+    public abstract void attackOpponent()
 }
