@@ -1,20 +1,11 @@
-<Team Name (without word "team")>
-<Member Bubbles>
-<Member Buttercup>
-<Member Blossom>
-pd <pd#>
+Bayside Basics
+Jason Kim
+Derek Song
+pd 1
 ---------------------
-<Project>
-
-
+Battleship: Human vs. Computer
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-USAGE:
-* Replace all fields, angle brackets included, with specified info.
-  eg, pd <pd#> --> pd 3
-* Delete these instructions once all teammates understand usage.
-  (from tilde bar above to tilde bar below)
-
 devlog--
 Use keyboard shortcut to jump to end,
  replicate entry template,
@@ -26,30 +17,23 @@ Flesh out each category whenever necessary, appropriate.
  but best done as you go along.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-
-
 /////////// Zone of Reflection \\\\\\\\\\\
 ------------------------------------------
 OBSTACLES OVERCOME
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-<Wow, we so BOSS bc...>
+- We were able to successful get a game going!
 
 UNRESOLVED ISSUES
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-<
-blah blah pesky bug...
-maybe some of these will move into the Obs.Ovrcm section...
->
+- Currently, the AdvancedAI is not developed... well at all.
 
 COOL STUFF LEARNED
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-<wow! oo! etc!...>
+- Characters (at least the ones we used) are all equal to width. So everything looks even on the grid.
 
 MID-DEVELOPMENT DESIGN CHANGES
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-We changed ___ to ___ bc...
-<etc>
-<etc>
+- From the original proposal, we have gotten rid of subclass AI as the common traits between BeginnerAI and AdvancedAI are already mentioned in superclass Player.
 
 LESSONS LEARNED
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -70,9 +54,14 @@ LESSONS LEARNED
 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
 
-yyyy-mm-dd
+2018-01-07
 --------------------------------------------------------------
-<Member> :: <Thing member did.>
-<Member> :: <Thing member did.>
-<Member> :: <Thing member did.>
+Jason Kim :: Code a successful backbone to work off of. We have made a usable BeginnerAI and Human class that still require refinement but are still usable. 
+Derek Song :: Researched better methods on programming the AdvancedAI in the future (We played a few games and lost frequently...). Also tested the backbnone. 
+==============================================================
+
+2018-01-08
+--------------------------------------------------------------
+Jason Kim :: 
+Derek Song :: 
 ==============================================================
