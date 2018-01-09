@@ -1,5 +1,5 @@
 # baysidebasics
-Jason Kim, Derek Song
+**_Jason Kim, Derek Song_**
 
 **Battleship: Human vs. Computer**
 
