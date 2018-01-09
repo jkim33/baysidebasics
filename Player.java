@@ -94,4 +94,15 @@ public class Player {
 	    _grid[8][col] = "D";
 	}
     }
+
+    public void check() {
+	for (String[] i: h._grid) {
+	    for (String s: i){
+		if (s != "O" || s!= "H" || s != "X") {
+		    return false;
+		}
+	    }
+	}
+	return true;
+    }
 }

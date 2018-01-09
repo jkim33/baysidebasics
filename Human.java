@@ -1,13 +1,13 @@
 public class Human extends Player {
     public String toString() {
-	String ret = "";
+	String ret = "Your Grid: \n";
 	for (String[] i:_grid) {
 	    for (String str: i) {
 		ret += str + " ";
 	    }
 	    ret += "\n";
 	}
-	ret += "=================================================================\n";
+	ret += "============================\nOpponent's Grid: \n";
 	for (String[] i:_oppGrid) {
 	    for (String str: i) {
 		ret += str + " ";

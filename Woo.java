@@ -1,23 +1,6 @@
 import cs1.Keyboard;
 
 public class Woo {
-    public static Boolean check(Human h, BeginnerAI ai) {
-	for (String[] i: h._grid) {
-	    for (String s: i){
-		if (s != "O" || s!= "H" || s != "X") {
-		    return true;
-		}
-	    }
-	}
-	for (String[] i: ai._grid) {
-	    for (String s: i){
-		if (s != "O" || s!= "H" || s != "X") {
-		    return true;
-		}
-	    }
-	}
-	return false;
-    }
     
     public static void main (String[]args) {
 	Human human = new Human();
@@ -36,8 +19,15 @@ public class Woo {
 	    System.out.print("Col: ");
 	    col = Keyboard.readInt();
 	    human.attackOpponent(row,col, AI);
+	    if (AI.check()) {
+		System.out.println("You Win!");
+		break;
+	    }
 	    AI.attackOpponent(human);
-	    a = check(human, AI);
+	    if (human.check()) {
+		System.out.println("You Lose!");
+		break;
+	    }
 	}
     }
 }
