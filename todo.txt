@@ -13,7 +13,7 @@
 ========================Code-Wise=========================
 
 1) Allow user input of ships
-2) Start AdvancedAI
-3) Complete BeginnerAI
+2) Complete BeginnerAI
+3) Start AdvancedAI
 
 ==========================================================
