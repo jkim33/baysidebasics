@@ -1,0 +1,17 @@
+**************BaysideBasics' To Do List!******************
+
+=======Actions that make everything time efficient!=======
+
+1) Organize thoughts about everything before implementation
+2) More KtS usage (Mainly Derek)
+3) Think about clever ways to do something ONLY if we have a clear thinking path
+4) Talk to partner about code they put up.
+
+==========================================================
+
+
+========================Code-Wise=========================
+1) Allow user input of ships
+2) Start AdvancedAI
+3) Complete BeginnerAI
+==========================================================
