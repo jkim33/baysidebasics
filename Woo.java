@@ -1,10 +1,13 @@
 import cs1.Keyboard;
 
 public class Woo {
+
+    static Player human;
+    static Player AI;
     
     public static void main (String[]args) {
-	Player human = new Human();
-	Player AI = new BeginnerAI();
+	human = new Human();
+	AI = new BeginnerAI();
 	Boolean a = true;
 	int row = 0;
 	int col = 0;
@@ -21,12 +24,14 @@ public class Woo {
 	    human.attackOpponent(row,col, AI);
 	    if (AI.check()) {
 		System.out.println("You Win!");
-		break;
+		a=false;
 	    }
-	    AI.attackOpponent(human);
-	    if (human.check()) {
-		System.out.println("You Lose!");
-		break;
+	    else {
+		AI.attackOpponent(0,0,human);
+		if (human.check()) {
+		    System.out.println("You Lose!");
+		    a=false;
+		}
 	    }
 	}
     }

@@ -95,8 +95,8 @@ public abstract class Player {
 	}
     }
 
-    public void check() {
-	for (String[] i: h._grid) {
+    public boolean check() {
+	for (String[] i: _grid) {
 	    for (String s: i){
 		if (s != "O" || s!= "H" || s != "X") {
 		    return false;
@@ -107,5 +107,5 @@ public abstract class Player {
     }
 
     //abstract methods
-    public abstract void attackOpponent()
+    public abstract void attackOpponent(int r, int c, Player opp);
 }
