@@ -17,7 +17,10 @@ public class Human extends Player {
 	return ret;
     }
 
-    public void PlaceShips(int length, int row, int col, int orientation) { // essentially, the HP is the length
+    /*
+     Regarding orientation, 1 is North, 2 is East, 3 is South, 4 is West
+     */
+    public void PlaceShip(int length, int row, int col, int orientation) { // essentially, the HP is the length
 	
     }
     
