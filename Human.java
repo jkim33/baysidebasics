@@ -16,6 +16,10 @@ public class Human extends Player {
 	}
 	return ret;
     }
+
+    public void PlaceShips(int length, int row, int col, int orientation) { // essentially, the HP is the length
+	
+    }
     
     public void attackOpponent (int row, int col, Player opponent) {
 	if (opponent._grid[row][col] == "C" || opponent._grid[row][col] == "B" || opponent._grid[row][col] == "c" || opponent._grid[row][col] == "S" || opponent._grid[row][col] == "D") {
