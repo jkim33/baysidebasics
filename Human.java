@@ -19,8 +19,14 @@ public class Human extends Player {
 
     /*
      Regarding orientation, 1 is North, 2 is East, 3 is South, 4 is West
-     */
-    public void PlaceShip(int length, int row, int col, int orientation) { // essentially, the HP is the length
+    */
+    public void PlaceCarrier (int row, int col, int orientation) { // essentially, the HP is the length
+	int holder = 4; // because starting index is 0
+	if ((orientation == 1) && ((row - 5) > -1))
+	    while (holder > -1) {
+		_grid[holder][col] = "C";
+		holder--;
+	    }
 	
     }
     
