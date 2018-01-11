@@ -20,7 +20,7 @@ public class Human extends Player {
     }
 
     /*
-     Regarding orientation, 1 is North, 2 is East, 3 is South, 4 is West
+      Regarding orientation, 1 is North, 2 is East, 3 is South, 4 is West
     */
     public void placeCarrier () { // essentially, the HP is the length
 	System.out.print("Row: ");
@@ -33,9 +33,9 @@ public class Human extends Player {
 
 	if (orientation == 1) {
 	    if (row < holder) {
-		    System.out.println("NO! The ships doesn't fit!");
-		    placeCarrier();
-		    return;
+		System.out.println("NO! The ships doesn't fit!");
+		placeCarrier();
+		return;
 	    }
 	    while (holder > -1) {
 		if (_grid[row - holder][col] != "O") {
@@ -49,9 +49,9 @@ public class Human extends Player {
 	
 	if (orientation == 2) {
 	    if (col > 9 - holder) {
-		    System.out.println("NO! The ships doesn't fit!");
-		    placeCarrier();
-		    return;
+		System.out.println("NO! The ships doesn't fit!");
+		placeCarrier();
+		return;
 	    }
 	    while (holder > -1) {
 		if (_grid[row][col + holder] != "O") {
@@ -81,9 +81,9 @@ public class Human extends Player {
 	
 	if (orientation == 4) {
 	    if (col < holder) {
-		    System.out.println("NO! The ships doesn't fit!");
-		    placeCarrier();
-		    return;
+		System.out.println("NO! The ships doesn't fit!");
+		placeCarrier();
+		return;
 	    } 
 	    while (holder > -1) {
 		if (_grid[row][col - holder] != "O") {
@@ -133,14 +133,14 @@ public class Human extends Player {
 
 	if (orientation == 1) {
 	    if (row < holder) {
-		    System.out.println("NO! The ships doesn't fit!");
-		    placeCarrier();
-		    return;
+		System.out.println("NO! The ships doesn't fit!");
+		placeBattleship();
+		return;
 	    }
 	    while (holder > -1) {
 		if (_grid[row - holder][col] != "O") {
 		    System.out.println("NO! The ship cannot be placed that way!");
-		    placeCarrier();
+		    placeBattleship();
 		    return;
 		}
 		holder--;
@@ -149,14 +149,14 @@ public class Human extends Player {
 	
 	if (orientation == 2) {
 	    if (col > 9 - holder) {
-		    System.out.println("NO! The ships doesn't fit!");
-		    placeCarrier();
-		    return;
+		System.out.println("NO! The ships doesn't fit!");
+		placeBattleship();
+		return;
 	    }
 	    while (holder > -1) {
 		if (_grid[row][col + holder] != "O") {
 		    System.out.println("NO! The ship cannot be placed that way!");
-		    placeCarrier();
+		    placeBattleship();
 		    return;
 		}
 		holder--;
@@ -166,13 +166,13 @@ public class Human extends Player {
 	if (orientation == 3) {
 	    if (row > 9 - holder) {
 		System.out.println("NO! The ships doesn't fit!");
-		placeCarrier();
+		placeBattleship();
 		return;
 	    }
 	    while (holder > -1) {
 		if (_grid[row + holder][col] != "O") {
 		    System.out.println("NO! The ship cannot be placed that way!");
-		    placeCarrier();
+		    placeBattleship();
 		    return;
 		}
 		holder--;
@@ -181,14 +181,14 @@ public class Human extends Player {
 	
 	if (orientation == 4) {
 	    if (col < holder) {
-		    System.out.println("NO! The ships doesn't fit!");
-		    placeCarrier();
-		    return;
+		System.out.println("NO! The ships doesn't fit!");
+		placeBattleship();
+		return;
 	    } 
 	    while (holder > -1) {
 		if (_grid[row][col - holder] != "O") {
 		    System.out.println("NO! The ship cannot be placed that way!");
-		    placeCarrier();
+		    placeBattleship();
 		    return;
 		}
 		holder--;
@@ -233,14 +233,14 @@ public class Human extends Player {
 
 	if (orientation == 1) {
 	    if (row < holder) {
-		    System.out.println("NO! The ships doesn't fit!");
-		    placeCarrier();
-		    return;
+		System.out.println("NO! The ships doesn't fit!");
+		placeCruiser();
+		return;
 	    }
 	    while (holder > -1) {
 		if (_grid[row - holder][col] != "O") {
 		    System.out.println("NO! The ship cannot be placed that way!");
-		    placeCarrier();
+		    placeCruiser();
 		    return;
 		}
 		holder--;
@@ -249,14 +249,14 @@ public class Human extends Player {
 	
 	if (orientation == 2) {
 	    if (col > 9 - holder) {
-		    System.out.println("NO! The ships doesn't fit!");
-		    placeCarrier();
-		    return;
+		System.out.println("NO! The ships doesn't fit!");
+		placeCruiser();
+		return;
 	    }
 	    while (holder > -1) {
 		if (_grid[row][col + holder] != "O") {
 		    System.out.println("NO! The ship cannot be placed that way!");
-		    placeCarrier();
+		    placeCruiser();
 		    return;
 		}
 		holder--;
@@ -266,13 +266,13 @@ public class Human extends Player {
 	if (orientation == 3) {
 	    if (row > 9 - holder) {
 		System.out.println("NO! The ships doesn't fit!");
-		placeCarrier();
+		placeCruiser();
 		return;
 	    }
 	    while (holder > -1) {
 		if (_grid[row + holder][col] != "O") {
 		    System.out.println("NO! The ship cannot be placed that way!");
-		    placeCarrier();
+		    placeCruiser();
 		    return;
 		}
 		holder--;
@@ -281,14 +281,14 @@ public class Human extends Player {
 	
 	if (orientation == 4) {
 	    if (col < holder) {
-		    System.out.println("NO! The ships doesn't fit!");
-		    placeCarrier();
-		    return;
+		System.out.println("NO! The ships doesn't fit!");
+		placeCruiser();
+		return;
 	    } 
 	    while (holder > -1) {
 		if (_grid[row][col - holder] != "O") {
 		    System.out.println("NO! The ship cannot be placed that way!");
-		    placeCarrier();
+		    placeCruiser();
 		    return;
 		}
 		holder--;
@@ -333,14 +333,14 @@ public class Human extends Player {
 
 	if (orientation == 1) {
 	    if (row < holder) {
-		    System.out.println("NO! The ships doesn't fit!");
-		    placeCarrier();
-		    return;
+		System.out.println("NO! The ships doesn't fit!");
+		placeSubmarine();
+		return;
 	    }
 	    while (holder > -1) {
 		if (_grid[row - holder][col] != "O") {
 		    System.out.println("NO! The ship cannot be placed that way!");
-		    placeCarrier();
+		    placeSubmarine();
 		    return;
 		}
 		holder--;
@@ -349,14 +349,14 @@ public class Human extends Player {
 	
 	if (orientation == 2) {
 	    if (col > 9 - holder) {
-		    System.out.println("NO! The ships doesn't fit!");
-		    placeCarrier();
-		    return;
+		System.out.println("NO! The ships doesn't fit!");
+		placeSubmarine();
+		return;
 	    }
 	    while (holder > -1) {
 		if (_grid[row][col + holder] != "O") {
 		    System.out.println("NO! The ship cannot be placed that way!");
-		    placeCarrier();
+		    placeSubmarine();
 		    return;
 		}
 		holder--;
@@ -366,13 +366,13 @@ public class Human extends Player {
 	if (orientation == 3) {
 	    if (row > 9 - holder) {
 		System.out.println("NO! The ships doesn't fit!");
-		placeCarrier();
+		placeSubmarine();
 		return;
 	    }
 	    while (holder > -1) {
 		if (_grid[row + holder][col] != "O") {
 		    System.out.println("NO! The ship cannot be placed that way!");
-		    placeCarrier();
+		    placeSubmarine();
 		    return;
 		}
 		holder--;
@@ -381,14 +381,14 @@ public class Human extends Player {
 	
 	if (orientation == 4) {
 	    if (col < holder) {
-		    System.out.println("NO! The ships doesn't fit!");
-		    placeCarrier();
-		    return;
+		System.out.println("NO! The ships doesn't fit!");
+		placeSubmarine();
+		return;
 	    } 
 	    while (holder > -1) {
 		if (_grid[row][col - holder] != "O") {
 		    System.out.println("NO! The ship cannot be placed that way!");
-		    placeCarrier();
+		    placeSubmarine();
 		    return;
 		}
 		holder--;
@@ -433,14 +433,14 @@ public class Human extends Player {
 
 	if (orientation == 1) {
 	    if (row < holder) {
-		    System.out.println("NO! The ships doesn't fit!");
-		    placeCarrier();
-		    return;
+		System.out.println("NO! The ships doesn't fit!");
+		placeDestroyer();
+		return;
 	    }
 	    while (holder > -1) {
 		if (_grid[row - holder][col] != "O") {
 		    System.out.println("NO! The ship cannot be placed that way!");
-		    placeCarrier();
+		    placeDestroyer();
 		    return;
 		}
 		holder--;
@@ -449,14 +449,14 @@ public class Human extends Player {
 	
 	if (orientation == 2) {
 	    if (col > 9 - holder) {
-		    System.out.println("NO! The ships doesn't fit!");
-		    placeCarrier();
-		    return;
+		System.out.println("NO! The ships doesn't fit!");
+		placeDestroyer();
+		return;
 	    }
 	    while (holder > -1) {
 		if (_grid[row][col + holder] != "O") {
 		    System.out.println("NO! The ship cannot be placed that way!");
-		    placeCarrier();
+		    placeDestroyer();
 		    return;
 		}
 		holder--;
@@ -466,13 +466,13 @@ public class Human extends Player {
 	if (orientation == 3) {
 	    if (row > 9 - holder) {
 		System.out.println("NO! The ships doesn't fit!");
-		placeCarrier();
+		placeDestroyer();
 		return;
 	    }
 	    while (holder > -1) {
 		if (_grid[row + holder][col] != "O") {
 		    System.out.println("NO! The ship cannot be placed that way!");
-		    placeCarrier();
+		    placeDestroyer();
 		    return;
 		}
 		holder--;
@@ -481,14 +481,14 @@ public class Human extends Player {
 	
 	if (orientation == 4) {
 	    if (col < holder) {
-		    System.out.println("NO! The ships doesn't fit!");
-		    placeCarrier();
-		    return;
+		System.out.println("NO! The ships doesn't fit!");
+		placeDestroyer();
+		return;
 	    } 
 	    while (holder > -1) {
 		if (_grid[row][col - holder] != "O") {
 		    System.out.println("NO! The ship cannot be placed that way!");
-		    placeCarrier();
+		    placeDestroyer();
 		    return;
 		}
 		holder--;

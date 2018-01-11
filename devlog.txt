@@ -22,10 +22,12 @@ Flesh out each category whenever necessary, appropriate.
 OBSTACLES OVERCOME
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 - We were able to successful get a game going!
+- place(entershipname)()
 
 UNRESOLVED ISSUES
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 - Currently, the AdvancedAI is not developed... well at all.
+- Currently, a better user interface is needed.
 
 COOL STUFF LEARNED
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -62,6 +64,24 @@ Derek Song :: Researched better methods on programming the AdvancedAI in the fut
 
 2018-01-08
 --------------------------------------------------------------
-Jason Kim :: 
-Derek Song :: 
+Jason Kim :: General refinements
+Derek Song :: Helped make general refinements
+==============================================================
+
+2018-01-09
+--------------------------------------------------------------
+Jason Kim :: Player is now an abstract class.
+Derek Song :: Edited Woo to fit with the abstract class. Made todo.txt.
+==============================================================
+
+2018-01-10
+--------------------------------------------------------------
+Jason Kim :: Elaborated on Derek's code
+Derek Song :: Made basic outline for place(entershipname)() 
+==============================================================
+
+2018-01-11
+--------------------------------------------------------------
+Jason Kim ::
+Derek Song ::
 ==============================================================
