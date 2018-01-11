@@ -108,4 +108,9 @@ public abstract class Player {
 
     //abstract methods
     public abstract void attackOpponent(int r, int c, Player opp);
+    public abstract void placeCarrier();
+    public abstract void placeDestroyer();
+    public abstract void placeBattleship();
+    public abstract void placeCruiser();
+    public abstract void placeSubmarine();
 }

@@ -11,4 +11,15 @@ public class BeginnerAI extends Player {
 	    _oppGrid[row][col] = "X";
 	}
     }
+
+    public void placeCruiser() {
+    }
+    public void placeBattleship() {
+    }
+    public void placeCarrier() {
+    }
+    public void placeSubmarine() {
+    }
+    public void placeDestroyer() {
+    }
 }

@@ -12,7 +12,20 @@ public class Woo {
 	int row = 0;
 	int col = 0;
 	human.setGrid();
-	human.placeShip();
+	System.out.println("Time to place ships!");
+	System.out.println("For Orientation: 1 is North, 2 is East,3 is South, 4 is West");
+	
+	System.out.println("Please place your Carrier");
+	human.placeCarrier();
+	System.out.println("Please place your Battleship");
+	human.placeBattleship();
+	System.out.println("Please place your Cruiser");
+	human.placeCruiser();
+	System.out.println("Please place your Submarine");
+	human.placeSubmarine();
+	System.out.println("Please place your Destroyer");
+	human.placeDestroyer();
+
 	AI.setGrid();
 	AI.placeShip();
 	while (a) {
