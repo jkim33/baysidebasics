@@ -1,4 +1,5 @@
 public class BeginnerAI extends Player {
+    
     public void attackOpponent (int r, int c, Player opponent) {
 	int row = (int) (Math.random()*10);
 	int col = (int) (Math.random()*10);
