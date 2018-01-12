@@ -166,25 +166,25 @@ public class BeginnerAI extends Player {
 	holder = 3;
 	if (orientation == 1) {
 	    while (holder > -1) {
-		_grid[row - holder][col] = "C";
+		_grid[row - holder][col] = "B";
 		holder--;
 	    }
 	}
 	if (orientation == 2) {
 	    while (holder > -1) {
-		_grid[row][col + holder] = "C";
+		_grid[row][col + holder] = "B";
 		holder--;
 	    }
 	}
 	if (orientation == 3) {
 	    while (holder > -1) {
-		_grid[row + holder][col] = "C";
+		_grid[row + holder][col] = "B";
 		holder--;
 	    }
 	}
 	if (orientation == 4) {
 	    while (holder > -1) {
-		_grid[row][col - holder] = "C";
+		_grid[row][col - holder] = "B";
 		holder--;
 	    }
 	}
@@ -255,25 +255,25 @@ public class BeginnerAI extends Player {
 	holder = 2;
 	if (orientation == 1) {
 	    while (holder > -1) {
-		_grid[row - holder][col] = "C";
+		_grid[row - holder][col] = "c";
 		holder--;
 	    }
 	}
 	if (orientation == 2) {
 	    while (holder > -1) {
-		_grid[row][col + holder] = "C";
+		_grid[row][col + holder] = "c";
 		holder--;
 	    }
 	}
 	if (orientation == 3) {
 	    while (holder > -1) {
-		_grid[row + holder][col] = "C";
+		_grid[row + holder][col] = "c";
 		holder--;
 	    }
 	}
 	if (orientation == 4) {
 	    while (holder > -1) {
-		_grid[row][col - holder] = "C";
+		_grid[row][col - holder] = "c";
 		holder--;
 	    }
 	}
@@ -347,25 +347,25 @@ public class BeginnerAI extends Player {
 	holder = 2;
 	if (orientation == 1) {
 	    while (holder > -1) {
-		_grid[row - holder][col] = "C";
+		_grid[row - holder][col] = "S";
 		holder--;
 	    }
 	}
 	if (orientation == 2) {
 	    while (holder > -1) {
-		_grid[row][col + holder] = "C";
+		_grid[row][col + holder] = "S";
 		holder--;
 	    }
 	}
 	if (orientation == 3) {
 	    while (holder > -1) {
-		_grid[row + holder][col] = "C";
+		_grid[row + holder][col] = "S";
 		holder--;
 	    }
 	}
 	if (orientation == 4) {
 	    while (holder > -1) {
-		_grid[row][col - holder] = "C";
+		_grid[row][col - holder] = "S";
 		holder--;
 	    }
 	}
@@ -438,25 +438,25 @@ public class BeginnerAI extends Player {
 	holder = 1;
 	if (orientation == 1) {
 	    while (holder > -1) {
-		_grid[row - holder][col] = "C";
+		_grid[row - holder][col] = "D";
 		holder--;
 	    }
 	}
 	if (orientation == 2) {
 	    while (holder > -1) {
-		_grid[row][col + holder] = "C";
+		_grid[row][col + holder] = "D";
 		holder--;
 	    }
 	}
 	if (orientation == 3) {
 	    while (holder > -1) {
-		_grid[row + holder][col] = "C";
+		_grid[row + holder][col] = "D";
 		holder--;
 	    }
 	}
 	if (orientation == 4) {
 	    while (holder > -1) {
-		_grid[row][col - holder] = "C";
+		_grid[row][col - holder] = "D";
 		holder--;
 	    }
 	}
