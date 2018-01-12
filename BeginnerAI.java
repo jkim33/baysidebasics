@@ -105,7 +105,7 @@ public class BeginnerAI extends Player {
 	int row = (int) (Math.random() * 10);
 	int col = (int) (Math.random() * 10);
 	int orientation = (int) (Math.random() * 4) + 1;
-	int holder = 4; // because starting index is 0
+	int holder = 3; // because starting index is 0
 
 	if (orientation == 1) {
 	    if (row < holder) {
@@ -163,7 +163,7 @@ public class BeginnerAI extends Player {
 	    }
 	}
 
-	holder = 4;
+	holder = 3;
 	if (orientation == 1) {
 	    while (holder > -1) {
 		_grid[row - holder][col] = "C";
@@ -194,7 +194,7 @@ public class BeginnerAI extends Player {
 	int row = (int) (Math.random() * 10);
 	int col = (int) (Math.random() * 10);
 	int orientation = (int) (Math.random() * 4) + 1;
-	int holder = 4; // because starting index is 0
+	int holder = 2; // because starting index is 0
 
 	if (orientation == 1) {
 	    if (row < holder) {
@@ -252,7 +252,7 @@ public class BeginnerAI extends Player {
 	    }
 	}
 
-	holder = 4;
+	holder = 2;
 	if (orientation == 1) {
 	    while (holder > -1) {
 		_grid[row - holder][col] = "C";
@@ -286,7 +286,7 @@ public class BeginnerAI extends Player {
 	int row = (int) (Math.random() * 10);
 	int col = (int) (Math.random() * 10);
 	int orientation = (int) (Math.random() * 4) + 1;
-	int holder = 4; // because starting index is 0
+	int holder = 2; // because starting index is 0
 
 	if (orientation == 1) {
 	    if (row < holder) {
@@ -344,7 +344,7 @@ public class BeginnerAI extends Player {
 	    }
 	}
 
-	holder = 4;
+	holder = 2;
 	if (orientation == 1) {
 	    while (holder > -1) {
 		_grid[row - holder][col] = "C";
@@ -377,7 +377,7 @@ public class BeginnerAI extends Player {
 	int row = (int) (Math.random() * 10);
 	int col = (int) (Math.random() * 10);
 	int orientation = (int) (Math.random() * 4) + 1;
-	int holder = 4; // because starting index is 0
+	int holder = 1; // because starting index is 0
 
 	if (orientation == 1) {
 	    if (row < holder) {
@@ -435,7 +435,7 @@ public class BeginnerAI extends Player {
 	    }
 	}
 
-	holder = 4;
+	holder = 1;
 	if (orientation == 1) {
 	    while (holder > -1) {
 		_grid[row - holder][col] = "C";
