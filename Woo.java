@@ -11,6 +11,7 @@ public class Woo {
 	Boolean a = true;
 	int row = 0;
 	int col = 0;
+	human.start();
 	human.setGrid();
 	System.out.println("Time to place ships!");
 	System.out.println("For Orientation: 1 is North, 2 is East,3 is South, 4 is West");

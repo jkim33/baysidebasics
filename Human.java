@@ -19,9 +19,27 @@ public class Human extends Player {
 	return ret;
     }
 
-    public int LetterToInt() {
+    public void start() {
+	System.out.println("Welcome player.\n You are about to embark in a naval war. Are you prepared for that? Please enter Yes if you are, No if you are not.");
+	String ans = Keyboard.readString();
+	if (ans != "Yes" && ans != "No") {
+	    System.out.println ("Please enter a valid answer.\nIt is case-sensitive");
+	}
+	else {
+	    if (ans == "Yes") {
+		System.out.println ("That is what we, the game developers like to hear!! Prepare for war!");
+	    }
+	    if (ans == "No") {
+		System.out.println ("That is too bad. Prepare for war!");
+	    }
+	}
+    }
+    
+    public int LettertoInt() {
+	int column = 0;
 	String lower = "abcdefghij";
-	System.out.print("Please enter the column you would like to place your ship in:");
+	String upper = "ABCDEFGHIJ";
+	System.out.println("Please enter the column you would like to place your ship in:");
 	String let = Keyboard.readString();
         for (int x = 10; x > 0; x--) {
 	    Boolean inRange = true;
@@ -29,40 +47,45 @@ public class Human extends Player {
 		System.out.println("Please enter the column in CAPITAL letters");
 		LettertoInt();
 	    }
-	    if (let == "A") {
-		return 0;
-	    }
-	    if (let == "B") {
-		return 1;
-	    }
-	    if (let == "C") {
-		return 2;
-	    }
-	    if (let == "D") {
-		return 3;
-	    }
-	    if (let == "E") {
-		return 4;
-	    }
-	    if (let == "F") {
-		return 5;
-	    }
-	    if (let == "G") {
-		return 6;
-	    }
-	    if (let == "H") {
-		return 7;
-	    }
-	    if (let == "I") {
-		return 8;
-	    }
-	    if (let == "J") {
-		return 9;
+	    if (let != upper.substring (x - 1, x)) {
+		System.out.println ("Please enter a valid column. Columns range from A - J and please enter in CAPITAL letters.");
+		LettertoInt();
 	    }
 	}
-	
+	if (let == "A") {
+	     column = 0;
+	}
+	if (let == "B") {
+	    column = 1;
+	}
+	if (let == "C") {
+	    column = 2;
+	}
+	if (let == "D") {
+	    column = 3;
+	}
+	if (let == "E") {
+	    column = 4;
+	}
+	if (let == "F") {
+	    column = 5;
+	}
+	if (let == "G") {
+	    column = 6;
+	}
+	if (let == "H") {
+	    column = 7;
+	}
+	if (let == "I") {
+	    column = 8;
+	}
+	if (let == "J") {
+	    column = 9;
+	}
+	return column;
     }
-    // ====================  PLACE SHIP METHODS ===========================
+	
+// ====================  PLACE SHIP METHODS ===========================
     
     /*
       Regarding orientation, 1 is North, 2 is East, 3 is South, 4 is West
