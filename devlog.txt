@@ -82,6 +82,36 @@ Derek Song :: Made basic outline for place(entershipname)()
 
 2018-01-11
 --------------------------------------------------------------
+Jason Kim :: Made it so place(entershipname)() actually functions and works correctly with correct user input.
+Derek Song :: Helped Jason.
+==============================================================
+
+2018-01-12
+--------------------------------------------------------------
+Jason Kim :: Made it so place(entershipname)() doesn't work for incorrect inputs. Incorrect inputs now restart the function instead.
+Derek Song :: Looked for more errors. Also looked for more possibilities of user input failure. 
+==============================================================
+
+2018-01-13
+--------------------------------------------------------------
+Jason Kim :: Made it so place(entershipname)() doesn't work for the inputs Derek found to cause errors. 
+Derek Song :: Revised BeginnerAI's place(entershipname)() so now the AI can generate their own grids.
+==============================================================
+
+2018-01-14
+--------------------------------------------------------------
+Jason Kim :: Started to revise all attackOpponent() methods to prevent incorrect user input. Also started to give a lot more information and change more information within the method.
+Derek Song :: Refined other aspects of the code and improved some user interface flaws and made a start().
+==============================================================
+
+2018-01-15
+--------------------------------------------------------------
+Jason Kim :: Finalized place(entershiphere)(). Started AdvancedAI and implemented a majority of the methods. 
+Derek Song :: Helped Jason go through the process in a rigorous Skype call. 
+==============================================================
+
+2018-01-16
+--------------------------------------------------------------
 Jason Kim ::
 Derek Song ::
 ==============================================================
