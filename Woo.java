@@ -34,6 +34,7 @@ public class Woo {
 	System.out.println(human);
 	System.out.println("Please place your Destroyer");
 	human.placeDestroyer();
+	human.setPlaying(true);
 
 	AI.setGrid();
 	AI.placeShip();

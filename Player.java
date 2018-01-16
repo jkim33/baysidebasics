@@ -62,6 +62,11 @@ public abstract class Player {
 	_shipsAlive = newNum;
 	return old;
     }
+    public Boolean setPlaying(boolean boo) {
+	Boolean old = _playing;
+	_playing = boo;
+	return old;
+    }
 
     //methods
     public void setGrid() {

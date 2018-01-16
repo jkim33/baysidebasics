@@ -27,16 +27,27 @@ public class Human extends Player {
 	    ret += "========================================================================\n";
 	    return ret;
 	}
-	String ret = "Your Grid: \n";
-	for (String[] i:_grid) {
-	    for (String str: i) {
+	String ret = "\nYour Grid:                  Opponent's Grid:\n";
+	ret+= "    A B C D E F G H I J         A B C D E F G H I J\n";
+	ret+= "---------------------------------------------------\n";
+	for (int i = 0; i < 10; i++) {
+	    if (i == 9) {
+		ret += "10 |";
+	    }
+	    else {
+		ret += (i+1) + "  |";
+	    }
+	    for (String str: _grid[i]) {
 		ret += str + " ";
 	    }
-	    ret += "\n";
-	}
-	ret += "============================\nOpponent's Grid: \n";
-	for (String[] i:_oppGrid) {
-	    for (String str: i) {
+	    ret += "    ";
+	    if (i == 9) {
+		ret += "10 |";
+	    }
+	    else {
+		ret += (i+1) + "  |";
+	    }
+	    for (String str: _oppGrid[i]) {
 		ret += str + " ";
 	    }
 	    ret += "\n";
@@ -104,13 +115,18 @@ public class Human extends Player {
 	int row = Keyboard.readInt() - 1;
 	System.out.print("Column: ");
 	int col = letterToInt(Keyboard.readString());
-	if (row > 9 || col > 9) {
+	if (row > 9 || col > 9 || row < 0 || col < 0) {
 	    System.out.println("NO! Those coordinates are not valid!");
 	    placeCarrier();
 	    return;
 	}
 	System.out.print("Orientation: ");
 	int orientation = Keyboard.readInt();
+	if (orientation < 1 || orientation > 4) {
+	    System.out.println("NO! That Orientation is invalid. Read the instructions!");
+	    placeCarrier();
+	    return;
+	}
 	int holder = 4; // because starting index is 0
 
 	if (orientation == 1) {
@@ -216,6 +232,11 @@ public class Human extends Player {
 	}
 	System.out.print("Orientation: ");
 	int orientation = Keyboard.readInt();
+	if (orientation < 1 || orientation > 4) {
+	    System.out.println("NO! That Orientation is invalid. Read the instructions!");
+	    placeBattleship();
+	    return;
+	}
 	int holder = 3; // because starting index is 0
 
 	if (orientation == 1) {
@@ -321,6 +342,11 @@ public class Human extends Player {
 	}
 	System.out.print("Orientation: ");
 	int orientation = Keyboard.readInt();
+	if (orientation < 1 || orientation > 4) {
+	    System.out.println("NO! That Orientation is invalid. Read the instructions!");
+	    placeCruiser();
+	    return;
+	}
 	int holder = 2; // because starting index is 0
 
 	if (orientation == 1) {
@@ -426,6 +452,11 @@ public class Human extends Player {
 	}
 	System.out.print("Orientation: ");
 	int orientation = Keyboard.readInt();
+	if (orientation < 1 || orientation > 4) {
+	    System.out.println("NO! That Orientation is invalid. Read the instructions!");
+	    placeSubmarine();
+	    return;
+	}
 	int holder = 2; // because starting index is 0
 
 	if (orientation == 1) {
@@ -531,6 +562,11 @@ public class Human extends Player {
 	}
 	System.out.print("Orientation: ");
 	int orientation = Keyboard.readInt();
+	if (orientation < 1 || orientation > 4) {
+	    System.out.println("NO! That Orientation is invalid. Read the instructions!");
+	    placeDestroyer();
+	    return;
+	}
 	int holder = 1; // because starting index is 0
 
 	if (orientation == 1) {
@@ -623,6 +659,8 @@ public class Human extends Player {
 	    }
 	}
     }
+
+    // ==================== END PLACE SHIP METHODS ==========================
     
     public void attackOpponent (int row, int col, Player opponent) {
 	if (opponent._grid[row][col] == "C" || opponent._grid[row][col] == "B" || opponent._grid[row][col] == "c" || opponent._grid[row][col] == "S" || opponent._grid[row][col] == "D") {
@@ -634,7 +672,5 @@ public class Human extends Player {
 	    _oppGrid[row][col] = "X";
 	}
     }
-    
-    // ==================== END PLACE SHIP METHODS ==========================
 
 }
