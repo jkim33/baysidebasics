@@ -101,18 +101,31 @@ public abstract class Player {
     }
 
     public boolean check() {
-	for (String[] i: _grid) {
-	    for (String s: i){
-		if (s != "O" || s!= "H" || s != "X") {
-		    return false;
-		}
-	    }
+        int counter = 0;
+	if (_carrierHP != 0) {
+	    counter++;
 	}
-	return true;
+	if (_battleshipHP != 0) {
+	    counter++;
+	}
+	if (_cruiserHP != 0) {
+	    counter++;
+	}
+	if (_submarineHP != 0) {
+	    counter++;
+	}
+	if (_destroyerHP != 0) {
+	    counter++;
+	}
+	setShipsAlive(counter);
+	if (_shipsAlive == 0){
+	    return true;
+	}
+	return false;
     }
 
     //abstract methods
-    public abstract void attackOpponent(int r, int c, Player opp);
+    public abstract void attackOpponent(Player opp);
     public abstract void placeCarrier();
     public abstract void placeDestroyer();
     public abstract void placeBattleship();

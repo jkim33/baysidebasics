@@ -1,6 +1,6 @@
 public class AdvancedAI extends Player {
     int row, col;
-    public void attackOpponent(int r, int c, Player opponent) {
+    public void attackOpponent(Player opponent) {
 	row = (int) (_grid[0].length/2); // starts at center
 	col = (int) (_grid[0].length/2);
 	if (opponent._grid[row][col] == "C" || opponent._grid[row][col] == "B" || opponent._grid[row][col] == "c" || opponent._grid[row][col] == "S" || opponent._grid[row][col] == "D") {

@@ -662,40 +662,60 @@ public class Human extends Player {
 
     // ==================== END PLACE SHIP METHODS ==========================
     
-    public void attackOpponent (int row, int col, Player opponent) {
+    public void attackOpponent (Player opponent) {
+        System.out.print("Row: ");
+	int row = Keyboard.readInt() - 1;
+	System.out.print("Column: ");
+	int col = letterToInt(Keyboard.readString());
+	if (row > 9 || col > 9) {
+	    System.out.println("NO! Those coordinates are not valid!");
+	    attackOpponent(opponent);
+	    return;
+	}
 	if (opponent._grid[row][col] == "C") {
 	    opponent._grid[row][col] = "H";
 	    _oppGrid[row][col] = "H";
 	    opponent.setCarrierHP(opponent.getCarrierHP() - 1);
-	    lastShipHit = "Carrier";
+	    _lastShipHit = "Carrier";
+	    System.out.println("\nYou have hit the opponent's Carrier!");
 	}
 	else if (opponent._grid[row][col] == "B") {
 	    opponent._grid[row][col] = "H";
 	    _oppGrid[row][col] = "H";
 	    opponent.setBattleshipHP(opponent.getBattleshipHP() - 1);
-	    lastShipHit = "Battleship";
+	    _lastShipHit = "Battleship";
+	    System.out.println("\nYou have hit the opponent's Battleship!");
 	}
 	else if (opponent._grid[row][col] == "c") {
 	    opponent._grid[row][col] = "H";
 	    _oppGrid[row][col] = "H";
 	    opponent.setCruiserHP(opponent.getCruiserHP() - 1);
-	    lastShipHit = "Cruiser";
+	    _lastShipHit = "Cruiser";
+	    System.out.println("\nYou have hit the opponent's Cruiser!");
 	}
 	else if (opponent._grid[row][col] == "S") {
 	    opponent._grid[row][col] = "H";
 	    _oppGrid[row][col] = "H";
 	    opponent.setSubmarineHP(opponent.getSubmarineHP() - 1);
-	    lastShipHit = "Submarine";
+	    _lastShipHit = "Submarine";
+	    System.out.println("\nYou have hit the opponent's Submarine!");
 	}
 	else if (opponent._grid[row][col] == "D") {
 	    opponent._grid[row][col] = "H";
 	    _oppGrid[row][col] = "H";
 	    opponent.setDestroyerHP(opponent.getDestroyerHP() - 1);
-	    lastShipHit = "Destroyer";
+	    _lastShipHit = "Destroyer";
+	    System.out.println("\nYou have hit the opponent's Destroyer!");
+	}
+	else if (opponent._grid[row][col] == "X" || opponent._grid[row][col] == "H") {
+	    System.out.println("We suggest you to hit somewhere else!");
+	    attackOpponent (opponent);
+	    return;
 	}
 	else {
 	    opponent._grid[row][col] = "X";
 	    _oppGrid[row][col] = "X";
+	    System.out.println("You have completely missed!");
 	}
     }
 

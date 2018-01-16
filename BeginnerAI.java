@@ -1,43 +1,51 @@
 public class BeginnerAI extends Player {
     
-    public void attackOpponent (int row, int col, Player opponent) {
+    public void attackOpponent (Player opponent) {
+	int row = (int) (Math.random() * 10);
+	int col = (int) (Math.random() * 10);
 	if (opponent._grid[row][col] == "C") {
 	    opponent._grid[row][col] = "H";
 	    _oppGrid[row][col] = "H";
 	    opponent.setCarrierHP(opponent.getCarrierHP() - 1);
-	    lastShipHit = "Carrier";
+	    _lastShipHit = "Carrier";
+	    System.out.println("You Opponent has hit your Carrier!");
 	}
 	else if (opponent._grid[row][col] == "B") {
 	    opponent._grid[row][col] = "H";
 	    _oppGrid[row][col] = "H";
 	    opponent.setBattleshipHP(opponent.getBattleshipHP() - 1);
-	    lastShipHit = "Battleship";
+	    _lastShipHit = "Battleship";
+	    System.out.println("You Opponent has hit your Battleship!");
 	}
 	else if (opponent._grid[row][col] == "c") {
 	    opponent._grid[row][col] = "H";
 	    _oppGrid[row][col] = "H";
 	    opponent.setCruiserHP(opponent.getCruiserHP() - 1);
-	    lastShipHit = "Cruiser";
+	    _lastShipHit = "Cruiser";
+	    System.out.println("You Opponent has hit your Cruiser!");
 	}
 	else if (opponent._grid[row][col] == "S") {
 	    opponent._grid[row][col] = "H";
 	    _oppGrid[row][col] = "H";
 	    opponent.setSubmarineHP(opponent.getSubmarineHP() - 1);
-	    lastShipHit = "Submarine";
+	    _lastShipHit = "Submarine";
+	    System.out.println("You Opponent has hit your Submarine!");
 	}
 	else if (opponent._grid[row][col] == "D") {
 	    opponent._grid[row][col] = "H";
 	    _oppGrid[row][col] = "H";
 	    opponent.setDestroyerHP(opponent.getDestroyerHP() - 1);
-	    lastShipHit = "Destroyer";
+	    _lastShipHit = "Destroyer";
+	    System.out.println("You Opponent has hit your Destroyer!");
 	}
 	else if (opponent._grid[row][col].equals("X") || opponent._grid[row][col].equals("H")){
-	    attackOpponent((int) (Math.random() * 10), (int) (Math.random() * 10),opponent);
+	    attackOpponent(opponent);
 	    return;
 	}
 	else {
 	    opponent._grid[row][col] = "X";
 	    _oppGrid[row][col] = "X";
+	    System.out.println("You Opponent has completely missed!");
 	}
     }
 

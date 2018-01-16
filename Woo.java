@@ -26,8 +26,6 @@ public class Woo {
 	human = new Human();
 	AI = new BeginnerAI();
 	Boolean a = true;
-	int row;
-	int col;
 
 	start(); // begin!
 	
@@ -59,17 +57,13 @@ public class Woo {
 	AI.placeShip();
 	while (a) {
 	    System.out.println(human);
-	    System.out.print("Row: ");
-	    row = Keyboard.readInt();
-	    System.out.print("Col: ");
-	    col = Keyboard.readInt();
-	    human.attackOpponent(row,col, AI);
+	    human.attackOpponent(AI);
 	    if (AI.check()) {
 		System.out.println("You Win!");
 		a=false;
 	    }
 	    else {
-		AI.attackOpponent(0,0,human);
+		AI.attackOpponent(human);
 		if (human.check()) {
 		    System.out.println("You Lose!");
 		    a=false;
