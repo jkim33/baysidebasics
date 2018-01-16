@@ -27,7 +27,7 @@ public class Human extends Player {
 	    ret += "========================================================================\n";
 	    return ret;
 	}
-	String ret = "\nYour Grid:                  Opponent's Grid:\n";
+	String ret = "\nYour Info:                  Opponent's Info:\n";
 	ret+= "    A B C D E F G H I J         A B C D E F G H I J\n";
 	ret+= "---------------------------------------------------\n";
 	for (int i = 0; i < 10; i++) {
@@ -54,7 +54,23 @@ public class Human extends Player {
 	}
 	return ret;
     }
-
+/*
+    public void start() {
+	System.out.println("Welcome player.\n You are about to embark in a naval war. Are you prepared for that? Please enter Yes if you are, No if you are not.");
+	String ans = Keyboard.readString();
+	if (ans != "Yes" && ans != "No") {
+	    System.out.println ("Please enter a valid answer.\nIt is case-sensitive");
+	}
+	else {
+	    if (ans == "Yes") {
+		System.out.println ("That is what we, the game developers like to hear!! Prepare for war!");
+	    }
+	    if (ans == "No") {
+		System.out.println ("That is too bad. Prepare for war!");
+	    }
+	}
+    }
+    */
     public int letterToInt(String let) {
 	if (let.equals("A")) {
 	    return 0;
@@ -647,9 +663,35 @@ public class Human extends Player {
     // ==================== END PLACE SHIP METHODS ==========================
     
     public void attackOpponent (int row, int col, Player opponent) {
-	if (opponent._grid[row][col] == "C" || opponent._grid[row][col] == "B" || opponent._grid[row][col] == "c" || opponent._grid[row][col] == "S" || opponent._grid[row][col] == "D") {
+	if (opponent._grid[row][col] == "C") {
 	    opponent._grid[row][col] = "H";
 	    _oppGrid[row][col] = "H";
+	    opponent.setCarrierHP(opponent.getCarrierHP() - 1);
+	    lastShipHit = "Carrier";
+	}
+	else if (opponent._grid[row][col] == "B") {
+	    opponent._grid[row][col] = "H";
+	    _oppGrid[row][col] = "H";
+	    opponent.setBattleshipHP(opponent.getBattleshipHP() - 1);
+	    lastShipHit = "Battleship";
+	}
+	else if (opponent._grid[row][col] == "c") {
+	    opponent._grid[row][col] = "H";
+	    _oppGrid[row][col] = "H";
+	    opponent.setCruiserHP(opponent.getCruiserHP() - 1);
+	    lastShipHit = "Cruiser";
+	}
+	else if (opponent._grid[row][col] == "S") {
+	    opponent._grid[row][col] = "H";
+	    _oppGrid[row][col] = "H";
+	    opponent.setSubmarineHP(opponent.getSubmarineHP() - 1);
+	    lastShipHit = "Submarine";
+	}
+	else if (opponent._grid[row][col] == "D") {
+	    opponent._grid[row][col] = "H";
+	    _oppGrid[row][col] = "H";
+	    opponent.setDestroyerHP(opponent.getDestroyerHP() - 1);
+	    lastShipHit = "Destroyer";
 	}
 	else {
 	    opponent._grid[row][col] = "X";

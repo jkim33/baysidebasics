@@ -1,11 +1,39 @@
 public class BeginnerAI extends Player {
     
-    public void attackOpponent (int r, int c, Player opponent) {
-	int row = (int) (Math.random()*10);
-	int col = (int) (Math.random()*10);
-	if (opponent._grid[row][col] == "C" || opponent._grid[row][col] == "B" || opponent._grid[row][col] == "c" || opponent._grid[row][col] == "S" || opponent._grid[row][col] == "D") {
+    public void attackOpponent (int row, int col, Player opponent) {
+	if (opponent._grid[row][col] == "C") {
 	    opponent._grid[row][col] = "H";
 	    _oppGrid[row][col] = "H";
+	    opponent.setCarrierHP(opponent.getCarrierHP() - 1);
+	    lastShipHit = "Carrier";
+	}
+	else if (opponent._grid[row][col] == "B") {
+	    opponent._grid[row][col] = "H";
+	    _oppGrid[row][col] = "H";
+	    opponent.setBattleshipHP(opponent.getBattleshipHP() - 1);
+	    lastShipHit = "Battleship";
+	}
+	else if (opponent._grid[row][col] == "c") {
+	    opponent._grid[row][col] = "H";
+	    _oppGrid[row][col] = "H";
+	    opponent.setCruiserHP(opponent.getCruiserHP() - 1);
+	    lastShipHit = "Cruiser";
+	}
+	else if (opponent._grid[row][col] == "S") {
+	    opponent._grid[row][col] = "H";
+	    _oppGrid[row][col] = "H";
+	    opponent.setSubmarineHP(opponent.getSubmarineHP() - 1);
+	    lastShipHit = "Submarine";
+	}
+	else if (opponent._grid[row][col] == "D") {
+	    opponent._grid[row][col] = "H";
+	    _oppGrid[row][col] = "H";
+	    opponent.setDestroyerHP(opponent.getDestroyerHP() - 1);
+	    lastShipHit = "Destroyer";
+	}
+	else if (opponent._grid[row][col].equals("X") || opponent._grid[row][col].equals("H")){
+	    attackOpponent((int) (Math.random() * 10), (int) (Math.random() * 10),opponent);
+	    return;
 	}
 	else {
 	    opponent._grid[row][col] = "X";
