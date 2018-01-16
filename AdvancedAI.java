@@ -23,53 +23,86 @@ public class AdvancedAI extends Player {
 	    _oppGrid[row][col] = "H";
 	    opponent.setCarrierHP(opponent.getCarrierHP() - 1);
 	    _lastShipHit = "Carrier";
-	    System.out.println("Your Opponent has hit your Carrier!");
-	    currentlyFinishing = true;
-	    changeFinishing(opponent);
+	    if (opponent.getCarrierHP() != 0) {
+		System.out.println("Your Opponent has hit your Carrier!");
+		currentlyFinishing = true;
+	    }
+	    else {
+		System.out.println("Your Opponent has sunk your Carrier!");
+		currentlyFinishing = false;
+	    }
+	    oldRow = row;
+	    oldCol = col;
 	}
 	else if (opponent._grid[row][col] == "B") {
 	    opponent._grid[row][col] = "H";
 	    _oppGrid[row][col] = "H";
 	    opponent.setBattleshipHP(opponent.getBattleshipHP() - 1);
 	    _lastShipHit = "Battleship";
-	    System.out.println("Your Opponent has hit your Battleship!");
-	    currentlyFinishing = true;
-	    changeFinishing(opponent);
+	    if (opponent.getBattleshipHP() != 0) {
+		System.out.println("Your Opponent has hit your Battleship!");
+		currentlyFinishing = true;
+	    }
+	    else {
+		System.out.println("Your Opponent has sunk your Battleship!");
+		currentlyFinishing = false;
+	    }
+	    oldRow = row;
+	    oldCol = col;
 	}
 	else if (opponent._grid[row][col] == "c") {
 	    opponent._grid[row][col] = "H";
 	    _oppGrid[row][col] = "H";
 	    opponent.setCruiserHP(opponent.getCruiserHP() - 1);
 	    _lastShipHit = "Cruiser";
-	    System.out.println("Your Opponent has hit your Cruiser!");
-	    currentlyFinishing = true;
-	    changeFinishing(opponent);
+	    if (opponent.getCruiserHP() != 0) {
+		System.out.println("Your Opponent has hit your Cruiser!");
+		currentlyFinishing = true;
+	    }
+	    else {
+		System.out.println("Your Opponent has sunk your Cruiser!");
+		currentlyFinishing = false;
+	    }
+	    oldRow = row;
+	    oldCol = col;
 	}
 	else if (opponent._grid[row][col] == "S") {
 	    opponent._grid[row][col] = "H";
 	    _oppGrid[row][col] = "H";
 	    opponent.setSubmarineHP(opponent.getSubmarineHP() - 1);
 	    _lastShipHit = "Submarine";
-	    System.out.println("Your Opponent has hit your Submarine!");
-	    currentlyFinishing = true;
-	    changeFinishing(opponent);
+	    if (opponent.getSubmarineHP() != 0) {
+		System.out.println("Your Opponent has hit your Submarine!");
+		currentlyFinishing = true;
+	    }
+	    else {
+		System.out.println("Your Opponent has sunk your Submarine!");
+		currentlyFinishing = false;
+	    }
+	    oldRow = row;
+	    oldCol = col;
 	}
 	else if (opponent._grid[row][col] == "D") {
 	    opponent._grid[row][col] = "H";
 	    _oppGrid[row][col] = "H";
 	    opponent.setDestroyerHP(opponent.getDestroyerHP() - 1);
 	    _lastShipHit = "Destroyer";
-	    System.out.println("Your Opponent has hit your Destroyer!");
-	    currentlyFinishing = true;
-	    changeFinishing(opponent);
+	    if (opponent.getDestroyerHP() != 0) {
+		System.out.println("Your Opponent has hit your Destroyer!");
+		currentlyFinishing = true;
+	    }
+	    else {
+		System.out.println("Your Opponent has sunk your Destroyer!");
+		currentlyFinishing = false;
+	    }
+	    oldRow = row;
+	    oldCol = col;
 	}
 	else {
 	    opponent._grid[row][col] = "X";
 	    _oppGrid[row][col] = "X";
 	    System.out.println("Your Opponent has completely missed!");
 	}
-	oldRow = row;
-	oldCol = col;
 	turnCount+= 1;
 	System.out.println(turnCount);
 	System.out.println(currentlyFinishing);
@@ -170,7 +203,7 @@ public class AdvancedAI extends Player {
 	row = row1;
 	col = col1;
     }
-	
+    /*
     public void changeFinishing (Player opp) {
 	oppShipsAlive = opp.getShipsAlive();
 	if (oppShipsAliveOld > oppShipsAlive) {
@@ -178,7 +211,7 @@ public class AdvancedAI extends Player {
 	}
 	oppShipsAliveOld = opp.getShipsAlive();
     }
-
+    */
 	
 
     public void placeCarrier() {

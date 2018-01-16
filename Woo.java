@@ -20,11 +20,20 @@ public class Woo {
 		System.out.println ("That is too bad. Prepare for war!\n");
 	    }
 	}
+	System.out.println("Time to choose the difficulty! If you fail to follow these instructions, we WILL make it harder for you!");
+	System.out.println("1) Beginner");
+	System.out.println("2) Advanced");
+	int diff = Keyboard.readInt();
+	if (diff == 1) {
+	    AI = new BeginnerAI();
+	}
+	else {
+	    AI = new AdvancedAI();
+	}
     }
     
     public static void main (String[]args) {
 	human = new Human();
-	AI = new AdvancedAI();
 	Boolean a = true;
 
 	start(); // begin!
@@ -54,7 +63,11 @@ public class Woo {
 	human.setPlaying(true);
 
 	AI.setGrid();
-	AI.placeShip();
+	AI.placeCarrier();
+	AI.placeBattleship();
+	AI.placeCruiser();
+	AI.placeSubmarine();
+	AI.placeDestroyer();
 	while (a) {
 	    System.out.println(human);
 	    human.attackOpponent(AI);
