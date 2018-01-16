@@ -4,6 +4,23 @@ public class Woo {
 
     static Player human;
     static Player AI;
+
+    public static void start() {
+	System.out.println("Welcome player.\n\nYou are about to embark in a naval war. Are you prepared for that?\nPlease enter Yes if you are, No if you are not.\n");
+	String ans = Keyboard.readString();
+	if (!(ans.equals("Yes")) && !(ans.equals("No"))) {
+	    System.out.println ("Please enter a valid answer.\nIt is case-sensitive\n");
+	    start();
+	}
+	else {
+	    if (ans.equals("Yes")) {
+		System.out.println ("\nThat is what we, the game developers, like to hear!! \nPrepare for war!\n");
+	    }
+	    if (ans.equals("No")) {
+		System.out.println ("That is too bad. Prepare for war!\n");
+	    }
+	}
+    }
     
     public static void main (String[]args) {
 	human = new Human();
@@ -11,6 +28,8 @@ public class Woo {
 	Boolean a = true;
 	int row;
 	int col;
+
+	start(); // begin!
 	
 	human.setGrid();
 	System.out.println("Time to place ships!");
