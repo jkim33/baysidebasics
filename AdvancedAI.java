@@ -1,16 +1,182 @@
 public class AdvancedAI extends Player {
+    int oldRow, oldCol;
     int row, col;
+    int rowAttempts = 0;
+    int turnCount = 1;
+    int oppShipsAliveOld = 5;
+    int oppShipsAlive = 5;
+    boolean currentlyFinishing = false;
+    
     public void attackOpponent(Player opponent) {
-	row = (int) (_grid[0].length/2); // starts at center
-	col = (int) (_grid[0].length/2);
-	if (opponent._grid[row][col] == "C" || opponent._grid[row][col] == "B" || opponent._grid[row][col] == "c" || opponent._grid[row][col] == "S" || opponent._grid[row][col] == "D") {
+	if (turnCount < 4) {
+	    centerCor();
+	}
+	else if (currentlyFinishing) {
+	    coorForHit();
+	}
+	else {
+	    rowChange();
+	    rowAttempts++;
+	}
+	if (opponent._grid[row][col] == "C") {
 	    opponent._grid[row][col] = "H";
 	    _oppGrid[row][col] = "H";
+	    opponent.setCarrierHP(opponent.getCarrierHP() - 1);
+	    _lastShipHit = "Carrier";
+	    System.out.println("Your Opponent has hit your Carrier!");
+	    currentlyFinishing = true;
+	    changeFinishing(opponent);
+	}
+	else if (opponent._grid[row][col] == "B") {
+	    opponent._grid[row][col] = "H";
+	    _oppGrid[row][col] = "H";
+	    opponent.setBattleshipHP(opponent.getBattleshipHP() - 1);
+	    _lastShipHit = "Battleship";
+	    System.out.println("Your Opponent has hit your Battleship!");
+	    currentlyFinishing = true;
+	    changeFinishing(opponent);
+	}
+	else if (opponent._grid[row][col] == "c") {
+	    opponent._grid[row][col] = "H";
+	    _oppGrid[row][col] = "H";
+	    opponent.setCruiserHP(opponent.getCruiserHP() - 1);
+	    _lastShipHit = "Cruiser";
+	    System.out.println("Your Opponent has hit your Cruiser!");
+	    currentlyFinishing = true;
+	    changeFinishing(opponent);
+	}
+	else if (opponent._grid[row][col] == "S") {
+	    opponent._grid[row][col] = "H";
+	    _oppGrid[row][col] = "H";
+	    opponent.setSubmarineHP(opponent.getSubmarineHP() - 1);
+	    _lastShipHit = "Submarine";
+	    System.out.println("Your Opponent has hit your Submarine!");
+	    currentlyFinishing = true;
+	    changeFinishing(opponent);
+	}
+	else if (opponent._grid[row][col] == "D") {
+	    opponent._grid[row][col] = "H";
+	    _oppGrid[row][col] = "H";
+	    opponent.setDestroyerHP(opponent.getDestroyerHP() - 1);
+	    _lastShipHit = "Destroyer";
+	    System.out.println("Your Opponent has hit your Destroyer!");
+	    currentlyFinishing = true;
+	    changeFinishing(opponent);
 	}
 	else {
 	    opponent._grid[row][col] = "X";
 	    _oppGrid[row][col] = "X";
+	    System.out.println("Your Opponent has completely missed!");
 	}
+	oldRow = row;
+	oldCol = col;
+	turnCount+= 1;
+	System.out.println(turnCount);
+	System.out.println(currentlyFinishing);
+    }
+
+    public int evenOrOdd (int r) {
+	if (r%2 == 0) {
+	    return 1;
+	}
+	return 2;
+    }
+    
+    public void centerCor() {
+	row = (int) (Math.random() * 4) + 3;
+	col = (int) (Math.random() * 4) + 3;
+	if (evenOrOdd(row) != evenOrOdd(col)) {
+	    centerCor();
+	    return;
+	}
+	if (_oppGrid[row][col] == "X" || _oppGrid[row][col] == "H") {
+	    centerCor();
+	    return;
+	}
+    }
+
+    public boolean fiveXH (int x) {
+	int counter = 0;
+        if (evenOrOdd(x) == 1) {
+	    for (int i = 0; i < 10; i+=2) {
+		if (_oppGrid[x][i] == "X" || _oppGrid[x][i] == "H") {
+		    counter++;
+		}
+	    }
+	}
+	else {
+	    for (int i = 1; i < 10; i+=2) {
+		if (_oppGrid[x][i] == "X" || _oppGrid[x][i] == "H") {
+		    counter++;
+		}
+	    }
+	}
+	if (counter > 4) {
+	    return true;
+	}
+	return false;
+    }
+
+    public void rowChange() {
+	if (rowAttempts > 2) {
+	    row = (int) (Math.random() * 10);
+	    rowAttempts = 0;
+	}
+        if (fiveXH(row)) {
+	    rowAttempts = 0;
+	    row = (int) (Math.random() * 10);
+	    rowChange();
+	    return;
+	}
+	col = (int) (Math.random() * 10);
+	if (evenOrOdd(row) != evenOrOdd(col)) {
+	    rowChange();
+	    return;
+	}
+	if (_oppGrid[row][col] == "X" || _oppGrid[row][col] == "H") {
+	    rowChange();
+	    return;
+	}
+    }
+
+    public void coorForHit() {
+	int random = (int) (Math.random() * 4);
+	int row1 = oldRow;
+	int col1 = oldCol;
+	if (random == 0) {
+	    row1 = oldRow;
+	    col1 = oldCol + 1;
+	}
+	if (random == 1) {
+	    row1 = oldRow;
+	    col1 = oldCol - 1;
+	}
+	if (random == 2) {
+	    row1 = oldRow + 1;
+	    col1 = oldCol;
+	}
+	if (random == 3) {
+	    row1 = oldRow - 1;
+	    col1 = oldCol;
+	}
+	if (row1 < 0 || col1 < 0|| row1 > 9|| col1 > 9) {
+	    coorForHit();
+	    return;
+	}
+	if (_oppGrid[row1][col1] == "X" || _oppGrid[row1][col1] == "H") {
+	    coorForHit();
+	    return;
+	}
+	row = row1;
+	col = col1;
+    }
+	
+    public void changeFinishing (Player opp) {
+	oppShipsAlive = opp.getShipsAlive();
+	if (oppShipsAliveOld > oppShipsAlive) {
+	    currentlyFinishing = false;
+	}
+	oppShipsAliveOld = opp.getShipsAlive();
     }
 
 	

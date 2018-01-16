@@ -24,7 +24,7 @@ public class Woo {
     
     public static void main (String[]args) {
 	human = new Human();
-	AI = new BeginnerAI();
+	AI = new AdvancedAI();
 	Boolean a = true;
 
 	start(); // begin!

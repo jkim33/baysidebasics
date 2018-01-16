@@ -8,35 +8,35 @@ public class BeginnerAI extends Player {
 	    _oppGrid[row][col] = "H";
 	    opponent.setCarrierHP(opponent.getCarrierHP() - 1);
 	    _lastShipHit = "Carrier";
-	    System.out.println("You Opponent has hit your Carrier!");
+	    System.out.println("Your Opponent has hit your Carrier!");
 	}
 	else if (opponent._grid[row][col] == "B") {
 	    opponent._grid[row][col] = "H";
 	    _oppGrid[row][col] = "H";
 	    opponent.setBattleshipHP(opponent.getBattleshipHP() - 1);
 	    _lastShipHit = "Battleship";
-	    System.out.println("You Opponent has hit your Battleship!");
+	    System.out.println("Your Opponent has hit your Battleship!");
 	}
 	else if (opponent._grid[row][col] == "c") {
 	    opponent._grid[row][col] = "H";
 	    _oppGrid[row][col] = "H";
 	    opponent.setCruiserHP(opponent.getCruiserHP() - 1);
 	    _lastShipHit = "Cruiser";
-	    System.out.println("You Opponent has hit your Cruiser!");
+	    System.out.println("Your Opponent has hit your Cruiser!");
 	}
 	else if (opponent._grid[row][col] == "S") {
 	    opponent._grid[row][col] = "H";
 	    _oppGrid[row][col] = "H";
 	    opponent.setSubmarineHP(opponent.getSubmarineHP() - 1);
 	    _lastShipHit = "Submarine";
-	    System.out.println("You Opponent has hit your Submarine!");
+	    System.out.println("Your Opponent has hit your Submarine!");
 	}
 	else if (opponent._grid[row][col] == "D") {
 	    opponent._grid[row][col] = "H";
 	    _oppGrid[row][col] = "H";
 	    opponent.setDestroyerHP(opponent.getDestroyerHP() - 1);
 	    _lastShipHit = "Destroyer";
-	    System.out.println("You Opponent has hit your Destroyer!");
+	    System.out.println("Your Opponent has hit your Destroyer!");
 	}
 	else if (opponent._grid[row][col].equals("X") || opponent._grid[row][col].equals("H")){
 	    attackOpponent(opponent);
@@ -45,7 +45,7 @@ public class BeginnerAI extends Player {
 	else {
 	    opponent._grid[row][col] = "X";
 	    _oppGrid[row][col] = "X";
-	    System.out.println("You Opponent has completely missed!");
+	    System.out.println("Your Opponent has completely missed!");
 	}
     }
 
