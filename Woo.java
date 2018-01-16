@@ -9,21 +9,29 @@ public class Woo {
 	human = new Human();
 	AI = new BeginnerAI();
 	Boolean a = true;
-	int row = 0;
-	int col = 0;
-	human.start();
+	int row;
+	int col;
+	
 	human.setGrid();
 	System.out.println("Time to place ships!");
-	System.out.println("For Orientation: 1 is North, 2 is East,3 is South, 4 is West");
 	
+	System.out.println(human);
 	System.out.println("Please place your Carrier");
 	human.placeCarrier();
+
+	System.out.println(human);
 	System.out.println("Please place your Battleship");
 	human.placeBattleship();
+
+	System.out.println(human);
 	System.out.println("Please place your Cruiser");
 	human.placeCruiser();
+
+	System.out.println(human);
 	System.out.println("Please place your Submarine");
 	human.placeSubmarine();
+
+	System.out.println(human);
 	System.out.println("Please place your Destroyer");
 	human.placeDestroyer();
 

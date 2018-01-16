@@ -2,6 +2,31 @@ import cs1.Keyboard;
 public class Human extends Player {
     
     public String toString() {
+	if (_playing == false) {
+	    String ret = "\nYour Current Grid: \n";
+	    ret += "    A B C D E F G H I J\n";
+	    ret += "-----------------------\n";
+	    int counter = 1;
+	    for (String[] i:_grid) {
+		if (counter == 10) {
+		    ret += counter + " |";
+		}
+		else {
+		    ret += counter + "  |";
+		}
+		for (String str: i) {
+		    ret += str + " ";
+		}
+		ret += "\n";
+		counter++;
+	    }
+	    ret += "========================================================================\n";
+	    ret += "Row: Can be any Integer between 1 - 10\n";
+	    ret += "Column: Can be any CAPITAL Letter between A - J\n";
+	    ret += "Orientation: Any Integer between 1 - 4.\n             1 is North, 2 is East, 3 is South, 4 is West.\n";
+	    ret += "========================================================================\n";
+	    return ret;
+	}
 	String ret = "Your Grid: \n";
 	for (String[] i:_grid) {
 	    for (String str: i) {
@@ -18,7 +43,7 @@ public class Human extends Player {
 	}
 	return ret;
     }
-
+/*
     public void start() {
 	System.out.println("Welcome player.\n You are about to embark in a naval war. Are you prepared for that? Please enter Yes if you are, No if you are not.");
 	String ans = Keyboard.readString();
@@ -34,55 +59,39 @@ public class Human extends Player {
 	    }
 	}
     }
-    
-    public int LettertoInt() {
-	int column = 0;
-	String lower = "abcdefghij";
-	String upper = "ABCDEFGHIJ";
-	System.out.println("Please enter the column you would like to place your ship in:");
-	String let = Keyboard.readString();
-        for (int x = 10; x > 0; x--) {
-	    Boolean inRange = true;
-	    if (let == lower.substring(x - 1, x)) {
-		System.out.println("Please enter the column in CAPITAL letters");
-		LettertoInt();
-	    }
-	    if (let != upper.substring (x - 1, x)) {
-		System.out.println ("Please enter a valid column. Columns range from A - J and please enter in CAPITAL letters.");
-		LettertoInt();
-	    }
+    */
+    public int letterToInt(String let) {
+	if (let.equals("A")) {
+	    return 0;
 	}
-	if (let == "A") {
-	     column = 0;
+	if (let.equals("B")) {
+	    return 1;
 	}
-	if (let == "B") {
-	    column = 1;
+	if (let.equals("C")) {
+	    return 2;
 	}
-	if (let == "C") {
-	    column = 2;
+	if (let.equals("D")) {
+	    return 3;
 	}
-	if (let == "D") {
-	    column = 3;
+	if (let.equals("E")) {
+	    return 4;
 	}
-	if (let == "E") {
-	    column = 4;
+	if (let.equals("F")) {
+	    return 5;
 	}
-	if (let == "F") {
-	    column = 5;
+	if (let.equals("G")) {
+	    return 6;
 	}
-	if (let == "G") {
-	    column = 6;
+	if (let.equals("H")) {
+	    return 7;
 	}
-	if (let == "H") {
-	    column = 7;
+	if (let.equals("I")) {
+	    return 8;
 	}
-	if (let == "I") {
-	    column = 8;
+	if (let.equals("J")) {
+	    return 9;
 	}
-	if (let == "J") {
-	    column = 9;
-	}
-	return column;
+	return 10;
     }
 	
 // ====================  PLACE SHIP METHODS ===========================
@@ -92,9 +101,14 @@ public class Human extends Player {
     */
     public void placeCarrier () { // essentially, the HP is the length
 	System.out.print("Row: ");
-	int row = Keyboard.readInt();
+	int row = Keyboard.readInt() - 1;
 	System.out.print("Column: ");
-	int col = Keyboard.readInt();
+	int col = letterToInt(Keyboard.readString());
+	if (row > 9 || col > 9) {
+	    System.out.println("NO! Those coordinates are not valid!");
+	    placeCarrier();
+	    return;
+	}
 	System.out.print("Orientation: ");
 	int orientation = Keyboard.readInt();
 	int holder = 4; // because starting index is 0
@@ -192,9 +206,14 @@ public class Human extends Player {
 
     public void placeBattleship () { // essentially, the HP is the length
 	System.out.print("Row: ");
-	int row = Keyboard.readInt();
+	int row = Keyboard.readInt() - 1;
 	System.out.print("Column: ");
-	int col = Keyboard.readInt();
+	int col = letterToInt(Keyboard.readString());
+	if (row > 9 || col > 9) {
+	    System.out.println("NO! Those coordinates are not valid!");
+	    placeBattleship();
+	    return;
+	}
 	System.out.print("Orientation: ");
 	int orientation = Keyboard.readInt();
 	int holder = 3; // because starting index is 0
@@ -292,9 +311,14 @@ public class Human extends Player {
 
     public void placeCruiser () { // essentially, the HP is the length
 	System.out.print("Row: ");
-	int row = Keyboard.readInt();
+	int row = Keyboard.readInt() - 1;
 	System.out.print("Column: ");
-	int col = Keyboard.readInt();
+	int col = letterToInt(Keyboard.readString());
+	if (row > 9 || col > 9) {
+	    System.out.println("NO! Those coordinates are not valid!");
+	    placeCruiser();
+	    return;
+	}
 	System.out.print("Orientation: ");
 	int orientation = Keyboard.readInt();
 	int holder = 2; // because starting index is 0
@@ -392,9 +416,14 @@ public class Human extends Player {
 
     public void placeSubmarine () { // essentially, the HP is the length
 	System.out.print("Row: ");
-	int row = Keyboard.readInt();
+	int row = Keyboard.readInt() - 1;
 	System.out.print("Column: ");
-	int col = Keyboard.readInt();
+	int col = letterToInt(Keyboard.readString());
+	if (row > 9 || col > 9) {
+	    System.out.println("NO! Those coordinates are not valid!");
+	    placeSubmarine();
+	    return;
+	}
 	System.out.print("Orientation: ");
 	int orientation = Keyboard.readInt();
 	int holder = 2; // because starting index is 0
@@ -492,9 +521,14 @@ public class Human extends Player {
 
     public void placeDestroyer () { // essentially, the HP is the length
 	System.out.print("Row: ");
-	int row = Keyboard.readInt();
+	int row = Keyboard.readInt() - 1;
 	System.out.print("Column: ");
-	int col = Keyboard.readInt();
+	int col = letterToInt(Keyboard.readString());
+	if (row > 9 || col > 9) {
+	    System.out.println("NO! Those coordinates are not valid!");
+	    placeDestroyer();
+	    return;
+	}
 	System.out.print("Orientation: ");
 	int orientation = Keyboard.readInt();
 	int holder = 1; // because starting index is 0

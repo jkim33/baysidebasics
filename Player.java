@@ -10,7 +10,7 @@ public abstract class Player {
     public int _cruiserHP = 3;
     public int _submarineHP = 3;
     public int _destroyerHP = 2;
-    public Boolean _playing = true;
+    public Boolean _playing = false;
     public String _lastShipHit = "";
 
     //mutators and accesors
