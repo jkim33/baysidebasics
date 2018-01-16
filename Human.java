@@ -54,23 +54,7 @@ public class Human extends Player {
 	}
 	return ret;
     }
-/*
-    public void start() {
-	System.out.println("Welcome player.\n You are about to embark in a naval war. Are you prepared for that? Please enter Yes if you are, No if you are not.");
-	String ans = Keyboard.readString();
-	if (ans != "Yes" && ans != "No") {
-	    System.out.println ("Please enter a valid answer.\nIt is case-sensitive");
-	}
-	else {
-	    if (ans == "Yes") {
-		System.out.println ("That is what we, the game developers like to hear!! Prepare for war!");
-	    }
-	    if (ans == "No") {
-		System.out.println ("That is too bad. Prepare for war!");
-	    }
-	}
-    }
-    */
+
     public int letterToInt(String let) {
 	if (let.equals("A")) {
 	    return 0;
