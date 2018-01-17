@@ -3,7 +3,6 @@ public abstract class Player {
     //instance variables
     protected String[][] _grid = new String[10][10];
     protected String[][] _oppGrid = new String[10][10];
-    protected int _missleCOunt = 0;
     protected int _shipsAlive = 5;
     protected int _carrierHP = 5;
     protected int _battleshipHP = 4;

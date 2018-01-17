@@ -5,9 +5,6 @@ public class AdvancedAI extends Player {
     protected int row, col;
     protected int rowAttempts = 0;
     protected int turnCount = 1;
-    protected int oppShipsAliveOld = 5;
-    protected int oppShipsAlive = 5;
-    
     
     protected ArrayList <Integer> carrierCoorRow = new ArrayList <Integer> ();
     protected ArrayList <Integer> carrierCoorCol = new ArrayList <Integer> ();
@@ -20,7 +17,7 @@ public class AdvancedAI extends Player {
     protected ArrayList <Integer> destroyerCoorRow = new ArrayList <Integer> ();
     protected ArrayList <Integer> destroyerCoorCol = new ArrayList <Integer> ();
     
-    private boolean currentlyFinishing = false;
+    protected boolean currentlyFinishing = false;
     
     public void attackOpponent(Player opponent) { // more strategy!
 	if (currentlyFinishing) { // if AI is currently finishing off a ship
@@ -32,7 +29,7 @@ public class AdvancedAI extends Player {
 	    }
 	}
 	else if (turnCount < 4) { // in the first 3 turns, perform centerCor()
-	    centerCor(); // refer to method
+	    centerCoor(); // refer to method
 	}
 	else { // starting from fourth turn
 	    rowChange();
@@ -144,15 +141,15 @@ public class AdvancedAI extends Player {
 	return 2;
     }
     
-    public void centerCor() {
+    public void centerCoor() {
 	row = (int) (Math.random() * 4) + 3; // 4x4 area in the center
 	col = (int) (Math.random() * 4) + 3;
 	if (evenOrOdd(row) != evenOrOdd(col)) { // if row is even but col is odd or vice versa
-	    centerCor(); // recall method
+	    centerCoor(); // recall method
 	    return;
 	}
 	if (_oppGrid[row][col] == "X" || _oppGrid[row][col] == "H") { // if the coordinate is already hit
-	    centerCor(); // recall method
+	    centerCoor(); // recall method
 	    return;
 	}
     }

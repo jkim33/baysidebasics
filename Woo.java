@@ -2,10 +2,11 @@ import cs1.Keyboard;
 
 public class Woo {
 
-    static Player human;
-    static Player AI;
+    private Player human = new Human();
+    private Player AI;
+    private boolean a = true;
 
-    public static void start() {
+    public void start() {
 	System.out.println("\n============================================");
 	System.out.println("Welcome player.\n\nYou are about to embark in a naval war. Are you prepared for that?\nPlease enter Yes if you are, No if you are not.\n");
 	String ans = Keyboard.readString();
@@ -34,13 +35,8 @@ public class Woo {
 	    AI = new AdvancedAI();
 	}
     }
-    
-    public static void main (String[]args) {
-	human = new Human();
-	Boolean a = true;
 
-	start(); // begin!
-	
+    public void setup() {
 	human.setGrid();
 	System.out.println("\n============================================");
 	System.out.println("Time to place ships!");
@@ -72,24 +68,35 @@ public class Woo {
 	AI.placeCruiser();
 	AI.placeSubmarine();
 	AI.placeDestroyer();
-	while (a) {
-	    System.out.println("\n============================================");
-	    System.out.println("Time to attack! Both grids are given to you.");
-	    System.out.println("Row: Integer between 1 - 10");
-	    System.out.println("Col: CAPITAL letter between A - J");
-	    System.out.println(human);
-	    human.attackOpponent(AI);
-	    if (AI.check()) {
-		System.out.println("Congratulations! You have defeated the enemy team! ");
+    }
+
+    public void runGame () {
+	System.out.println("\n============================================");
+	System.out.println("Time to attack! Both grids are given to you.");
+	System.out.println("Row: Integer between 1 - 10");
+	System.out.println("Col: CAPITAL letter between A - J");
+	System.out.println(human);
+	human.attackOpponent(AI);
+	if (AI.check()) {
+	    System.out.println("Congratulations! You have defeated the enemy team! ");
+	    a=false;
+	}
+	else {
+	    AI.attackOpponent(human);
+	    if (human.check()) {
+		System.out.println("Uh oh, your navy has been wiped out. You have lost.");
 		a=false;
 	    }
-	    else {
-		AI.attackOpponent(human);
-		if (human.check()) {
-		    System.out.println("Uh oh, your navy has been wiped out. You have lost.");
-		    a=false;
-		}
-	    }
 	}
+    }
+    
+    public static void main (String[]args) {
+	Woo game = new Woo();
+	game.start();
+	game.setup();
+	while (game.a) {
+	    game.runGame();
+	}
+	System.out.println("Your game is now over!");
     }
 }
