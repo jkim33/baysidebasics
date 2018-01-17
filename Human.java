@@ -25,11 +25,6 @@ public class Human extends Player {
 	    ret += "Column: Can be any CAPITAL Letter between A - J\n";
 	    ret += "Orientation: Any Integer between 1 - 4.\n             1 is North, 2 is East, 3 is South, 4 is West.\n";
 	    ret += "========================================================================\n";
-	    ret += "SYMBOL KEY:\n";
-	    ret += "\t'O' is an empty slot. Thus, you can choose any point in the grid with an 'O'";
-	    ret += "\t'X' is a miss. This appears if you shoot at a coordinate and a ship is not at that coordinate.";
-	    ret += "\t'H' is a hit. This appears if you shoot at a coordinate and a ship is at that coordinate.";
-	    ret += "========================================================================\n";
 	    return ret;
 	}
 	String ret = "\nYour Info:                  Opponent's Info:\n";
