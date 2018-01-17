@@ -8,6 +8,7 @@ public class AdvancedAI extends Player {
     private int oppShipsAliveOld = 5;
     private int oppShipsAlive = 5;
     
+    
     private ArrayList <Integer> carrierCoorRow = new ArrayList <Integer> ();
     private ArrayList <Integer> carrierCoorCol = new ArrayList <Integer> ();
     private ArrayList <Integer> battleshipCoorRow = new ArrayList <Integer> ();
@@ -23,7 +24,12 @@ public class AdvancedAI extends Player {
     
     public void attackOpponent(Player opponent) {
 	if (currentlyFinishing) {
-	    coorForHit();
+	    try {
+		coorForHit();
+	    }
+	    catch (Exception e) {
+		rowChange();
+	    }
 	}
 	else if (turnCount < 4) {
 	    centerCor();
@@ -128,8 +134,6 @@ public class AdvancedAI extends Player {
 	    System.out.println("Your Opponent has completely missed!");
 	}
 	turnCount+= 1;
-	System.out.println(turnCount);
-	System.out.println(currentlyFinishing);
     }
 
     public int evenOrOdd (int r) {
@@ -243,10 +247,10 @@ public class AdvancedAI extends Player {
 	    if (random == 0) {
 		row1++;
 	    }
-	    if (random == 1) {
+	    else if (random == 1) {
 		row1--;
 	    }
-	    if (random == 2) {
+	    else if (random == 2) {
 		col1++;
 	    }
 	    else {
@@ -261,8 +265,8 @@ public class AdvancedAI extends Player {
 		col1--;
 	    }
 	}
-	else {
-	    if (random == 0 || random == 1) {
+	else if (dire == 1) {
+	    if (random == 2 || random == 3) {
 		row1++;
 	    }
 	    else {

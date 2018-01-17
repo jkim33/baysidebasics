@@ -6,7 +6,7 @@ public class Woo {
     static Player AI;
 
     public static void start() {
-	System.out.println("Welcome player.\n\nYou are about to embark in a naval war. Are you prepared for that?\nPlease enter Yes if you are, No if you are not.\n");
+	System.out.println("\nWelcome player.\n\nYou are about to embark in a naval war. Are you prepared for that?\nPlease enter Yes if you are, No if you are not.\n");
 	String ans = Keyboard.readString();
 	if (!(ans.equals("Yes")) && !(ans.equals("No"))) {
 	    System.out.println ("Please enter a valid answer.\nIt is case-sensitive\n");
