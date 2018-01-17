@@ -1,75 +1,75 @@
 public abstract class Player {
 
     //instance variables
-    public String[][] _grid = new String[10][10];
-    public String[][] _oppGrid = new String[10][10];
-    public int _missleCOunt = 0;
-    public int _shipsAlive = 5;
-    public int _carrierHP = 5;
-    public int _battleshipHP = 4;
-    public int _cruiserHP = 3;
-    public int _submarineHP = 3;
-    public int _destroyerHP = 2;
-    public Boolean _playing = false;
-    public String _lastShipHit = "";
+    protected String[][] _grid = new String[10][10];
+    protected String[][] _oppGrid = new String[10][10];
+    protected int _missleCOunt = 0;
+    protected int _shipsAlive = 5;
+    protected int _carrierHP = 5;
+    protected int _battleshipHP = 4;
+    protected int _cruiserHP = 3;
+    protected int _submarineHP = 3;
+    protected int _destroyerHP = 2;
+    protected Boolean _playing = false;
+    protected String _lastShipHit = "";
 
     //mutators and accesors
-    public int getCarrierHP() {
+    public int getCarrierHP() { // gives access to Carrier HP
 	return _carrierHP;
     }
-    public int getBattleshipHP() {
+    public int getBattleshipHP() { // gives access to Battleship HP
 	return _battleshipHP;
     }
-    public int getCruiserHP() {
+    public int getCruiserHP() { // gives access to Cruiser HP
 	return _cruiserHP;
     }
-    public int getSubmarineHP() {
+    public int getSubmarineHP() { // gives access to Submarine HP
 	return _submarineHP;
     }
-    public int getDestroyerHP() {
+    public int getDestroyerHP() { // gives access to Destroyer HP
 	return _destroyerHP;
     }
-    public int getShipsAlive() {
+    public int getShipsAlive() { // gives access to number of ships alive
 	return _shipsAlive;
     }
-    public int setCarrierHP(int newHP) {
+    public int setCarrierHP(int newHP) { // changes the Carrier HP
 	int old = _carrierHP;
 	_carrierHP = newHP;
 	return old;
     }
-    public int setBattleshipHP(int newHP) {
+    public int setBattleshipHP(int newHP) { // changes the Battleship HP
 	int old = _battleshipHP;
 	_battleshipHP = newHP;
 	return old;
     }
-    public int setCruiserHP(int newHP) {
+    public int setCruiserHP(int newHP) { // changes the Cruiser HP
 	int old = _cruiserHP;
 	_cruiserHP = newHP;
 	return old;
     }
-    public int setSubmarineHP(int newHP) {
+    public int setSubmarineHP(int newHP) { // changes the Submarine HP
 	int old = _submarineHP;
 	_submarineHP = newHP;
 	return old;
     }
-    public int setDestroyerHP(int newHP) {
+    public int setDestroyerHP(int newHP) { // changes the Destroyer HP
 	int old = _destroyerHP;
 	_destroyerHP = newHP;
  	return old;
     }
-    public int setShipsAlive(int newNum) {
+    public int setShipsAlive(int newNum) { // changes the number of ships alive
 	int old = _shipsAlive;
 	_shipsAlive = newNum;
 	return old;
     }
-    public Boolean setPlaying(boolean boo) {
+    public Boolean setPlaying(boolean boo) { // 
 	Boolean old = _playing;
 	_playing = boo;
 	return old;
     }
 
     //methods
-    public void setGrid() {
+    public void setGrid() { // "O" is the default symbol
 	for (int row = 0; row < 10; row++) {
 	    for (int col = 0; col < 10; col++) {
 		_grid[row][col] = "O";
@@ -82,25 +82,7 @@ public abstract class Player {
 	}
     }
 
-    public void placeShip() { //temp
-        for (int col = 0; col < 5; col++) {
-	    _grid[0][col] = "C";
-	}
-	for (int col = 0; col < 4; col++) {
-	    _grid[2][col] = "B";
-	}
-	for (int col = 0; col < 3; col++) {
-	    _grid[4][col] = "c";
-	}
-	for (int col = 0; col < 3; col++) {
-	    _grid[6][col] = "S";
-	}
-	for (int col = 0; col < 2; col++) {
-	    _grid[8][col] = "D";
-	}
-    }
-
-    public boolean check() {
+    public boolean check() { //for each time a ship's HP is not 0, then the counter, which displays the number of ships alive, would go up by 1.
         int counter = 0;
 	if (_carrierHP != 0) {
 	    counter++;
@@ -117,10 +99,10 @@ public abstract class Player {
 	if (_destroyerHP != 0) {
 	    counter++;
 	}
-	setShipsAlive(counter);
-	if (_shipsAlive == 0){
-	    return true;
-	}
+	setShipsAlive(counter); // shipsAlive = counter
+	if (_shipsAlive == 0){ // if no ships are alive...
+	    return true; // its true that all the ships are gone
+ 	}
 	return false;
     }
 

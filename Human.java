@@ -1,10 +1,10 @@
 import cs1.Keyboard;
 public class Human extends Player {
     
-    public String toString() {
+    public String toString() { // makes grid
 	if (_playing == false) {
 	    String ret = "\nYour Current Grid: \n";
-	    ret += "    A B C D E F G H I J\n";
+	    ret += "    A B C D E F G H I J\n"; // shows the letters of the columns on the top
 	    ret += "-----------------------\n";
 	    int counter = 1;
 	    for (String[] i:_grid) {
@@ -24,6 +24,11 @@ public class Human extends Player {
 	    ret += "Row: Can be any Integer between 1 - 10\n";
 	    ret += "Column: Can be any CAPITAL Letter between A - J\n";
 	    ret += "Orientation: Any Integer between 1 - 4.\n             1 is North, 2 is East, 3 is South, 4 is West.\n";
+	    ret += "========================================================================\n";
+	    ret += "SYMBOL KEY:\n";
+	    ret += "\t'O' is an empty slot. Thus, you can choose any point in the grid with an 'O'";
+	    ret += "\t'X' is a miss. This appears if you shoot at a coordinate and a ship is not at that coordinate.";
+	    ret += "\t'H' is a hit. This appears if you shoot at a coordinate and a ship is at that coordinate.";
 	    ret += "========================================================================\n";
 	    return ret;
 	}
@@ -55,9 +60,9 @@ public class Human extends Player {
 	return ret;
     }
 
-    public int letterToInt(String let) {
+    public int letterToInt(String let) { // changes the column input into a integer 
 	if (let.equals("A")) {
-	    return 0;
+	    return 0; // because arrays start at index 0
 	}
 	if (let.equals("B")) {
 	    return 1;
@@ -86,7 +91,7 @@ public class Human extends Player {
 	if (let.equals("J")) {
 	    return 9;
 	}
-	return 10;
+	return 10; // this makes the coordinate invalid
     }
 	
 // ====================  PLACE SHIP METHODS ===========================
@@ -96,31 +101,31 @@ public class Human extends Player {
     */
     public void placeCarrier () { // essentially, the HP is the length
 	System.out.print("Row: ");
-	int row = Keyboard.readInt() - 1;
+	int row = Keyboard.readInt() - 1; // because array index starts at 0
 	System.out.print("Column: ");
-	int col = letterToInt(Keyboard.readString());
-	if (row > 9 || col > 9 || row < 0 || col < 0) {
+	int col = letterToInt(Keyboard.readString()); // takes a string input and converts it to an integer using the letterToInt() helper method
+	if (row > 9 || col > 9 || row < 0 || col < 0) { // if out of bounds
 	    System.out.println("NO! Those coordinates are not valid!");
-	    placeCarrier();
+	    placeCarrier(); // go back to the method
 	    return;
 	}
 	System.out.print("Orientation: ");
 	int orientation = Keyboard.readInt();
-	if (orientation < 1 || orientation > 4) {
+	if (orientation < 1 || orientation > 4) { // if out of bounds
 	    System.out.println("NO! That Orientation is invalid. Read the instructions!");
 	    placeCarrier();
 	    return;
 	}
-	int holder = 4; // because starting index is 0
+	int holder = 4; // because starting index is 0 and the size of the ship is 5.
 
 	if (orientation == 1) {
-	    if (row < holder) {
+	    if (row < holder) { // if the ship goes out of the grid boundaries
 		System.out.println("NO! The ship doesn't fit!");
 		placeCarrier();
 		return;
 	    }
 	    while (holder > -1) {
-		if (_grid[row - holder][col] != "O") {
+		if (_grid[row - holder][col] != "O") { // if the ship goes out of the grid boundaries
 		    System.out.println("NO! The ship cannot be placed that way!");
 		    placeCarrier();
 		    return;
@@ -130,13 +135,13 @@ public class Human extends Player {
 	}
 	
 	if (orientation == 2) {
-	    if (col > 9 - holder) {
+	    if (col > 9 - holder) { // if the ship goes out of the grid boundaries
 		System.out.println("NO! The ship doesn't fit!");
 		placeCarrier();
 		return;
 	    }
 	    while (holder > -1) {
-		if (_grid[row][col + holder] != "O") {
+		if (_grid[row][col + holder] != "O") { // if the ship goes out of the grid boundaries
 		    System.out.println("NO! The ship cannot be placed that way!");
 		    placeCarrier();
 		    return;
@@ -146,13 +151,13 @@ public class Human extends Player {
 	}
 	
 	if (orientation == 3) {
-	    if (row > 9 - holder) {
+	    if (row > 9 - holder) { // if the ship goes out of the grid boundaries
 		System.out.println("NO! The ship doesn't fit!");
 		placeCarrier();
 		return;
 	    }
 	    while (holder > -1) {
-		if (_grid[row + holder][col] != "O") {
+		if (_grid[row + holder][col] != "O") { // if the ship goes out of the grid boundaries
 		    System.out.println("NO! The ship cannot be placed that way!");
 		    placeCarrier();
 		    return;
@@ -162,13 +167,13 @@ public class Human extends Player {
 	}
 	
 	if (orientation == 4) {
-	    if (col < holder) {
+	    if (col < holder) { // if the ship goes out of the grid boundaries
 		System.out.println("NO! The ship doesn't fit!");
 		placeCarrier();
 		return;
 	    } 
 	    while (holder > -1) {
-		if (_grid[row][col - holder] != "O") {
+		if (_grid[row][col - holder] != "O") { // if the ship goes out of the grid boundaries
 		    System.out.println("NO! The ship cannot be placed that way!");
 		    placeCarrier();
 		    return;
@@ -179,25 +184,25 @@ public class Human extends Player {
 
 	holder = 4;
 	if (orientation == 1) {
-	    while (holder > -1) {
+	    while (holder > -1) { // if the ship goes out of the grid boundaries
 		_grid[row - holder][col] = "C";
 		holder--;
 	    }
 	}
 	if (orientation == 2) {
-	    while (holder > -1) {
+	    while (holder > -1) { // if the ship goes out of the grid boundaries
 		_grid[row][col + holder] = "C";
 		holder--;
 	    }
 	}
 	if (orientation == 3) {
-	    while (holder > -1) {
+	    while (holder > -1) { // if the ship goes out of the grid boundaries
 		_grid[row + holder][col] = "C";
 		holder--;
 	    }
 	}
 	if (orientation == 4) {
-	    while (holder > -1) {
+	    while (holder > -1) { // if the ship goes out of the grid boundaries
 		_grid[row][col - holder] = "C";
 		holder--;
 	    }
@@ -206,10 +211,10 @@ public class Human extends Player {
 
     public void placeBattleship () { // essentially, the HP is the length
 	System.out.print("Row: ");
-	int row = Keyboard.readInt() - 1;
+	int row = Keyboard.readInt() - 1; // because array index starts at 0
 	System.out.print("Column: ");
-	int col = letterToInt(Keyboard.readString());
-	if (row > 9 || col > 9) {
+	int col = letterToInt(Keyboard.readString()); // takes a string input and converts it to an integer using the letterToInt() helper method
+	if (row > 9 || col > 9) { // if out of bounds
 	    System.out.println("NO! Those coordinates are not valid!");
 	    placeBattleship();
 	    return;
@@ -221,7 +226,7 @@ public class Human extends Player {
 	    placeBattleship();
 	    return;
 	}
-	int holder = 3; // because starting index is 0
+	int holder = 3; // because starting index is 0 and the size of the ship is 4
 
 	if (orientation == 1) {
 	    if (row < holder) {
@@ -316,10 +321,10 @@ public class Human extends Player {
 
     public void placeCruiser () { // essentially, the HP is the length
 	System.out.print("Row: ");
-	int row = Keyboard.readInt() - 1;
+	int row = Keyboard.readInt() - 1; // because starting index is 0
 	System.out.print("Column: ");
-	int col = letterToInt(Keyboard.readString());
-	if (row > 9 || col > 9) {
+	int col = letterToInt(Keyboard.readString()); // takes a string input and converts it to an integer using the letterToInt() helper method
+	if (row > 9 || col > 9) { // if out of bounds
 	    System.out.println("NO! Those coordinates are not valid!");
 	    placeCruiser();
 	    return;
@@ -331,7 +336,7 @@ public class Human extends Player {
 	    placeCruiser();
 	    return;
 	}
-	int holder = 2; // because starting index is 0
+	int holder = 2; // because starting index is 0 and the size of the ship is 3
 
 	if (orientation == 1) {
 	    if (row < holder) {
@@ -428,8 +433,8 @@ public class Human extends Player {
 	System.out.print("Row: ");
 	int row = Keyboard.readInt() - 1;
 	System.out.print("Column: ");
-	int col = letterToInt(Keyboard.readString());
-	if (row > 9 || col > 9) {
+	int col = letterToInt(Keyboard.readString()); // takes a string input and converts it to an integer using the letterToInt() helper method
+	if (row > 9 || col > 9) { // if out of bounds
 	    System.out.println("NO! Those coordinates are not valid!");
 	    placeSubmarine();
 	    return;
@@ -441,7 +446,7 @@ public class Human extends Player {
 	    placeSubmarine();
 	    return;
 	}
-	int holder = 2; // because starting index is 0
+	int holder = 2; // because starting index is 0 and the size of the ship is 3
 
 	if (orientation == 1) {
 	    if (row < holder) {
@@ -538,8 +543,8 @@ public class Human extends Player {
 	System.out.print("Row: ");
 	int row = Keyboard.readInt() - 1;
 	System.out.print("Column: ");
-	int col = letterToInt(Keyboard.readString());
-	if (row > 9 || col > 9) {
+	int col = letterToInt(Keyboard.readString()); // takes a string input and converts it to an integer using the letterToInt() helper method
+	if (row > 9 || col > 9) { // if out of bounds
 	    System.out.println("NO! Those coordinates are not valid!");
 	    placeDestroyer();
 	    return;
@@ -551,7 +556,7 @@ public class Human extends Player {
 	    placeDestroyer();
 	    return;
 	}
-	int holder = 1; // because starting index is 0
+	int holder = 1; // because starting index is 0 and the size of the ship is 2
 
 	if (orientation == 1) {
 	    if (row < holder) {
@@ -647,77 +652,77 @@ public class Human extends Player {
     // ==================== END PLACE SHIP METHODS ==========================
     
     public void attackOpponent (Player opponent) {
-        System.out.print("Row: ");
+        System.out.print("Row: "); // takes coordinate inputs
 	int row = Keyboard.readInt() - 1;
 	System.out.print("Column: ");
 	int col = letterToInt(Keyboard.readString());
-	if (row > 9 || col > 9) {
+	if (row > 9 || col > 9) { // if out of bounds
 	    System.out.println("NO! Those coordinates are not valid!");
-	    attackOpponent(opponent);
+	    attackOpponent(opponent); // recalls the method after saying that it is invalid
 	    return;
 	}
-	System.out.println("\n==========What Happened That Turn?==========");
-	if (opponent._grid[row][col] == "C") {
+	System.out.println("\n==========What Happened That Turn?=========="); // recaps what happened during that turn
+	if (opponent._grid[row][col] == "C") { // if user hits the AI's carrier
 	    opponent._grid[row][col] = "H";
 	    _oppGrid[row][col] = "H";
 	    opponent.setCarrierHP(opponent.getCarrierHP() - 1);
 	    _lastShipHit = "Carrier";
-	    if (opponent.getCarrierHP() != 0) {
+	    if (opponent.getCarrierHP() != 0) { // if user did not sink the opponenet's ship yet
 		System.out.println("You have hit the opponent's Carrier!");
 	    }
-	    else {
+	    else { // if user sinks ship
 		System.out.println("You have sunk your opponent's Carrier!");
 	    }
 	}
-	else if (opponent._grid[row][col] == "B") {
+	else if (opponent._grid[row][col] == "B") { // if user hits the AI's battleship
 	    opponent._grid[row][col] = "H";
 	    _oppGrid[row][col] = "H";
 	    opponent.setBattleshipHP(opponent.getBattleshipHP() - 1);
 	    _lastShipHit = "Battleship";
-	    if (opponent.getBattleshipHP() != 0) {
+	    if (opponent.getBattleshipHP() != 0) { // if user did not sink the opponenet's ship yet
 		System.out.println("You have hit the opponent's Battleship!");
 	    }
-	    else {
+	    else { // if user sinks ship
 		System.out.println("You have sunk your opponent's Battleship!");
 	    }
 	}
-	else if (opponent._grid[row][col] == "c") {
+	else if (opponent._grid[row][col] == "c") { // if user hits the AI's cruiser
 	    opponent._grid[row][col] = "H";
 	    _oppGrid[row][col] = "H";
 	    opponent.setCruiserHP(opponent.getCruiserHP() - 1);
 	    _lastShipHit = "Cruiser";
-	    if (opponent.getCruiserHP() != 0) {
+	    if (opponent.getCruiserHP() != 0) { // if user did not sink the opponenet's ship yet
 		System.out.println("You have hit the opponent's Cruiser!");
 	    }
-	    else {
+	    else { // if user sinks ship
 		System.out.println("You have sunk your opponent's Cruiser!");
 	    }
 	}
-	else if (opponent._grid[row][col] == "S") {
+	else if (opponent._grid[row][col] == "S") { // if user hits the AI's submarine
 	    opponent._grid[row][col] = "H";
 	    _oppGrid[row][col] = "H";
 	    opponent.setSubmarineHP(opponent.getSubmarineHP() - 1);
 	    _lastShipHit = "Submarine";
-	    if (opponent.getSubmarineHP() != 0) {
+	    if (opponent.getSubmarineHP() != 0) { // if user did not sink the opponenet's ship yet
 		System.out.println("You have hit the opponent's Submarine!");
 	    }
-	    else {
+	    else { // if user sinks ship
 		System.out.println("You have sunk your opponent's Submarine!");
 	    }
 	}
-	else if (opponent._grid[row][col] == "D") {
+	else if (opponent._grid[row][col] == "D") { // if user hits the AI's destroyer
 	    opponent._grid[row][col] = "H";
 	    _oppGrid[row][col] = "H";
 	    opponent.setDestroyerHP(opponent.getDestroyerHP() - 1);
 	    _lastShipHit = "Destroyer";
-	    if (opponent.getDestroyerHP() != 0) {
+	    if (opponent.getDestroyerHP() != 0) { // if user did not sink the opponenet's ship yet
 		System.out.println("You have hit the opponent's Destroyer!");
 	    }
-	    else {
+	    else { // if user sinks ship
 		System.out.println("You have sunk your opponent's Destroyer!");
 	    }
 	}
-	else if (opponent._grid[row][col] == "X" || opponent._grid[row][col] == "H") {
+	else if (opponent._grid[row][col] == "X" || opponent._grid[row][col] == "H") { // if the user has already attacked that coordinate before
 	    System.out.println("We suggest you to hit somewhere else!");
 	    attackOpponent (opponent);
 	    return;

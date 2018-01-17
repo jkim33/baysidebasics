@@ -1,65 +1,65 @@
 public class BeginnerAI extends Player {
     
     public void attackOpponent (Player opponent) {
-	int row = (int) (Math.random() * 10);
+	int row = (int) (Math.random() * 10); // randomly chooses coordinates to shoot
 	int col = (int) (Math.random() * 10);
-	if (opponent._grid[row][col] == "C") {
-	    opponent._grid[row][col] = "H";
+	if (opponent._grid[row][col] == "C") { // if hits a carrier
+	    opponent._grid[row][col] = "H"; // signifies hit
 	    _oppGrid[row][col] = "H";
-	    opponent.setCarrierHP(opponent.getCarrierHP() - 1);
+	    opponent.setCarrierHP(opponent.getCarrierHP() - 1); // reduce HP
 	    _lastShipHit = "Carrier";
-	    if (opponent.getCarrierHP() != 0) {
+	    if (opponent.getCarrierHP() != 0) { // carrier not dead
 		System.out.println("Your Opponent has hit your Carrier!");
 	    }
-	    else {
+	    else { // carrier dead
 		System.out.println("Your Opponent has sunk your Carrier!");
 	    }
 	}
-	else if (opponent._grid[row][col] == "B") {
-	    opponent._grid[row][col] = "H";
+	else if (opponent._grid[row][col] == "B") { // if hits a battleship
+	    opponent._grid[row][col] = "H"; // signifies hit
 	    _oppGrid[row][col] = "H";
-	    opponent.setBattleshipHP(opponent.getBattleshipHP() - 1);
+	    opponent.setBattleshipHP(opponent.getBattleshipHP() - 1); // reduce HP
 	    _lastShipHit = "Battleship";
-	    if (opponent.getBattleshipHP() != 0) {
+	    if (opponent.getBattleshipHP() != 0) { // battleship not dead
 		System.out.println("Your Opponent has hit your Battleship!");
 	    }
-	    else {
+	    else { // battleship dead
 		System.out.println("Your Opponent has sunk your Battleship!");
 	    }
 	}
-	else if (opponent._grid[row][col] == "c") {
-	    opponent._grid[row][col] = "H";
+	else if (opponent._grid[row][col] == "c") { // if hits a cruiser
+	    opponent._grid[row][col] = "H"; // signifies hit
 	    _oppGrid[row][col] = "H";
-	    opponent.setCruiserHP(opponent.getCruiserHP() - 1);
+	    opponent.setCruiserHP(opponent.getCruiserHP() - 1); // reduce HP
 	    _lastShipHit = "Cruiser";
-	    if (opponent.getCruiserHP() != 0) {
+	    if (opponent.getCruiserHP() != 0) { // cruiser not dead
 		System.out.println("Your Opponent has hit your Cruiser!");
 	    }
-	    else {
+	    else { // cruiser dead
 		System.out.println("Your Opponent has sunk your Cruiser!");
 	    }
 	}
-	else if (opponent._grid[row][col] == "S") {
-	    opponent._grid[row][col] = "H";
+	else if (opponent._grid[row][col] == "S") { // if hits a submarine
+	    opponent._grid[row][col] = "H"; // signifies hit
 	    _oppGrid[row][col] = "H";
-	    opponent.setSubmarineHP(opponent.getSubmarineHP() - 1);
+	    opponent.setSubmarineHP(opponent.getSubmarineHP() - 1); // reduce HP
 	    _lastShipHit = "Submarine";
-	    if (opponent.getSubmarineHP() != 0) {
+	    if (opponent.getSubmarineHP() != 0) { // submarine not dead
 		System.out.println("Your Opponent has hit your Submarine!");
 	    }
-	    else {
+	    else { // submarine dead
 		System.out.println("Your Opponent has sunk your Submarine!");
 	    }
 	}
-	else if (opponent._grid[row][col] == "D") {
-	    opponent._grid[row][col] = "H";
+	else if (opponent._grid[row][col] == "D") { // if hits a destroyer
+	    opponent._grid[row][col] = "H"; // signifies hit
 	    _oppGrid[row][col] = "H";
-	    opponent.setDestroyerHP(opponent.getDestroyerHP() - 1);
+	    opponent.setDestroyerHP(opponent.getDestroyerHP() - 1); // reduce HP
 	    _lastShipHit = "Destroyer";
-	    if (opponent.getDestroyerHP() != 0) {
+	    if (opponent.getDestroyerHP() != 0) { // destroyer not dead
 		System.out.println("Your Opponent has hit your Destroyer!");
 	    }
-	    else {
+	    else { // destroyer dead
 		System.out.println("Your Opponent has sunk your Destroyer!");
 	    }
 	}
@@ -72,7 +72,7 @@ public class BeginnerAI extends Player {
     }
 
     public void placeCarrier() {
-	int row = (int) (Math.random() * 10);
+	int row = (int) (Math.random() * 10); // randomly places ship
 	int col = (int) (Math.random() * 10);
 	int orientation = (int) (Math.random() * 4) + 1;
 	int holder = 4; // because starting index is 0
@@ -93,7 +93,7 @@ public class BeginnerAI extends Player {
 	
 	if (orientation == 2) {
 	    if (col > 9 - holder) {
-			placeCarrier();
+		placeCarrier();
 		return;
 	    }
 	    while (holder > -1) {
@@ -161,7 +161,7 @@ public class BeginnerAI extends Player {
     }
     public void placeBattleship() {
 	
-	int row = (int) (Math.random() * 10);
+	int row = (int) (Math.random() * 10); // randomly places ship
 	int col = (int) (Math.random() * 10);
 	int orientation = (int) (Math.random() * 4) + 1;
 	int holder = 3; // because starting index is 0
@@ -250,7 +250,7 @@ public class BeginnerAI extends Player {
     }
     public void placeCruiser() {
 	
-	int row = (int) (Math.random() * 10);
+	int row = (int) (Math.random() * 10); // randomly places ship
 	int col = (int) (Math.random() * 10);
 	int orientation = (int) (Math.random() * 4) + 1;
 	int holder = 2; // because starting index is 0
@@ -342,7 +342,7 @@ public class BeginnerAI extends Player {
     public void placeSubmarine() {
 	
 	
-	int row = (int) (Math.random() * 10);
+	int row = (int) (Math.random() * 10); // randomly places ship
 	int col = (int) (Math.random() * 10);
 	int orientation = (int) (Math.random() * 4) + 1;
 	int holder = 2; // because starting index is 0
@@ -433,7 +433,7 @@ public class BeginnerAI extends Player {
     
     public void placeDestroyer() {
 	
-	int row = (int) (Math.random() * 10);
+	int row = (int) (Math.random() * 10); // randomly places ship
 	int col = (int) (Math.random() * 10);
 	int orientation = (int) (Math.random() * 4) + 1;
 	int holder = 1; // because starting index is 0
