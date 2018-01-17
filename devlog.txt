@@ -41,6 +41,7 @@ MID-DEVELOPMENT DESIGN CHANGES
 LESSONS LEARNED
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 - Making the MVP (Most Viable Product) was essential in making sure that we would encounter the least possible number of errors. Performing our game development in that manner allowed us to circumvent the difficult obstacles that would have hindered our continuous progress.
+- Slowing down your mind and talking with your partner about your code is essential in making sure your code makes sense.
 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
@@ -113,6 +114,6 @@ Derek Song :: Helped Jason go through the process in a rigorous Skype call.
 
 2018-01-16
 --------------------------------------------------------------
-Jason Kim :: With Derek, on another rigorous Skype call, developed and elaborated on the AdvancedAI class. 
+Jason Kim :: With Derek, on another rigorous Skype call, developed and elaborated on the AdvancedAI class. Took out some methods due to lack of necessity.
 Derek Song :: Worked with Jason on AdvancedAI and improved user interface as well. Continuously played the game with Jason in search for errors.
 ==============================================================
