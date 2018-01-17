@@ -75,8 +75,9 @@ public class Woo {
 	System.out.println("Time to attack! Both grids are given to you.");
 	System.out.println("Row: Integer between 1 - 10");
 	System.out.println("Col: CAPITAL letter between A - J");
+	System.out.println("============================================");
 	System.out.println("\n============================================");
-	System.out.println("\nGRID KEY:\n");
+	System.out.println("GRID KEY:\n");
 	System.out.println("\t'C' represents a carrier, which is the largest ship in your navy! It occupies 5 spaces.");
 	System.out.println("\t'B' represents a battleship! It occupies 4 spaces.");
 	System.out.println("\t'c' represents a cruiser! It occupies 3 spaces.");
@@ -86,7 +87,7 @@ public class Woo {
 	System.out.println("\t'O' is an empty slot. Thus, you can choose any point in the grid with an 'O'");
 	System.out.println("\t'X' is a miss. This appears if you shoot at a coordinate and a ship is not at that coordinate.");
 	System.out.println("\t'H' is a hit. This appears if you shoot at a coordinate and a ship is at that coordinate.");
-	System.out.println("\n============================================\n");
+	System.out.println("============================================");
 	    
 	System.out.println(human);
 	human.attackOpponent(AI);
