@@ -1,18 +1,32 @@
+import java.util.ArrayList;
+
 public class AdvancedAI extends Player {
-    int oldRow, oldCol;
-    int row, col;
-    int rowAttempts = 0;
-    int turnCount = 1;
-    int oppShipsAliveOld = 5;
-    int oppShipsAlive = 5;
-    boolean currentlyFinishing = false;
+    private int oldRow, oldCol;
+    private int row, col;
+    private int rowAttempts = 0;
+    private int turnCount = 1;
+    private int oppShipsAliveOld = 5;
+    private int oppShipsAlive = 5;
+    
+    private ArrayList <Integer> carrierCoorRow = new ArrayList <Integer> ();
+    private ArrayList <Integer> carrierCoorCol = new ArrayList <Integer> ();
+    private ArrayList <Integer> battleshipCoorRow = new ArrayList <Integer> ();
+    private ArrayList <Integer> battleshipCoorCol = new ArrayList <Integer> ();
+    private ArrayList <Integer> cruiserCoorRow = new ArrayList <Integer> ();
+    private ArrayList <Integer> cruiserCoorCol = new ArrayList <Integer> ();
+    private ArrayList <Integer> submarineCoorRow = new ArrayList <Integer> ();
+    private ArrayList <Integer> submarineCoorCol = new ArrayList <Integer> ();
+    private ArrayList <Integer> destroyerCoorRow = new ArrayList <Integer> ();
+    private ArrayList <Integer> destroyerCoorCol = new ArrayList <Integer> ();
+    
+    private boolean currentlyFinishing = false;
     
     public void attackOpponent(Player opponent) {
-	if (turnCount < 4) {
-	    centerCor();
-	}
-	else if (currentlyFinishing) {
+	if (currentlyFinishing) {
 	    coorForHit();
+	}
+	else if (turnCount < 4) {
+	    centerCor();
 	}
 	else {
 	    rowChange();
@@ -23,6 +37,8 @@ public class AdvancedAI extends Player {
 	    _oppGrid[row][col] = "H";
 	    opponent.setCarrierHP(opponent.getCarrierHP() - 1);
 	    _lastShipHit = "Carrier";
+	    carrierCoorRow.add(row);
+	    carrierCoorCol.add(col);
 	    if (opponent.getCarrierHP() != 0) {
 		System.out.println("Your Opponent has hit your Carrier!");
 		currentlyFinishing = true;
@@ -39,6 +55,8 @@ public class AdvancedAI extends Player {
 	    _oppGrid[row][col] = "H";
 	    opponent.setBattleshipHP(opponent.getBattleshipHP() - 1);
 	    _lastShipHit = "Battleship";
+	    battleshipCoorRow.add(row);
+	    battleshipCoorCol.add(col);
 	    if (opponent.getBattleshipHP() != 0) {
 		System.out.println("Your Opponent has hit your Battleship!");
 		currentlyFinishing = true;
@@ -55,6 +73,8 @@ public class AdvancedAI extends Player {
 	    _oppGrid[row][col] = "H";
 	    opponent.setCruiserHP(opponent.getCruiserHP() - 1);
 	    _lastShipHit = "Cruiser";
+	    cruiserCoorRow.add(row);
+	    cruiserCoorCol.add(col);
 	    if (opponent.getCruiserHP() != 0) {
 		System.out.println("Your Opponent has hit your Cruiser!");
 		currentlyFinishing = true;
@@ -71,6 +91,8 @@ public class AdvancedAI extends Player {
 	    _oppGrid[row][col] = "H";
 	    opponent.setSubmarineHP(opponent.getSubmarineHP() - 1);
 	    _lastShipHit = "Submarine";
+	    submarineCoorRow.add(row);
+	    submarineCoorCol.add(col);
 	    if (opponent.getSubmarineHP() != 0) {
 		System.out.println("Your Opponent has hit your Submarine!");
 		currentlyFinishing = true;
@@ -87,6 +109,8 @@ public class AdvancedAI extends Player {
 	    _oppGrid[row][col] = "H";
 	    opponent.setDestroyerHP(opponent.getDestroyerHP() - 1);
 	    _lastShipHit = "Destroyer";
+	    destroyerCoorRow.add(row);
+	    destroyerCoorCol.add(col);
 	    if (opponent.getDestroyerHP() != 0) {
 		System.out.println("Your Opponent has hit your Destroyer!");
 		currentlyFinishing = true;
@@ -172,25 +196,78 @@ public class AdvancedAI extends Player {
 	}
     }
 
+    public int coorForHitR () {
+	if (_lastShipHit.equals("Carrier")){
+	    return carrierCoorRow.get((int) (Math.random() * carrierCoorRow.size()));
+	}
+	if (_lastShipHit.equals("Battleship")){
+	    return battleshipCoorRow.get((int) (Math.random() * battleshipCoorRow.size()));
+	}
+	if (_lastShipHit.equals("Cruiser")){
+	    return cruiserCoorRow.get((int) (Math.random() * cruiserCoorRow.size()));
+	}
+	if (_lastShipHit.equals("Submarine")){
+	    return submarineCoorRow.get((int) (Math.random() * submarineCoorRow.size()));
+	}
+	if (_lastShipHit.equals("Destroyer")){
+	    return destroyerCoorRow.get((int) (Math.random() * destroyerCoorRow.size()));
+	}
+	return oldRow;
+    }
+
+    public int coorForHitC () {
+	if (_lastShipHit.equals("Carrier")){
+	    return carrierCoorCol.get((int) (Math.random() * carrierCoorRow.size()));
+	}
+	if (_lastShipHit.equals("Battleship")){
+	    return battleshipCoorCol.get((int) (Math.random() * battleshipCoorRow.size()));
+	}
+	if (_lastShipHit.equals("Cruiser")){
+	    return cruiserCoorCol.get((int) (Math.random() * cruiserCoorRow.size()));
+	}
+	if (_lastShipHit.equals("Submarine")){
+	    return submarineCoorCol.get((int) (Math.random() * submarineCoorRow.size()));
+	}
+	if (_lastShipHit.equals("Destroyer")){
+	    return destroyerCoorCol.get((int) (Math.random() * destroyerCoorRow.size()));
+	}
+	return oldCol;
+    }
+    
     public void coorForHit() {
 	int random = (int) (Math.random() * 4);
-	int row1 = oldRow;
-	int col1 = oldCol;
-	if (random == 0) {
-	    row1 = oldRow;
-	    col1 = oldCol + 1;
+	int row1 = coorForHitR();
+	int col1 = coorForHitC();
+	int dire = checkDirection();
+	if (dire == 3) {
+	    if (random == 0) {
+		row1++;
+	    }
+	    if (random == 1) {
+		row1--;
+	    }
+	    if (random == 2) {
+		col1++;
+	    }
+	    else {
+		col1--;
+	    }
 	}
-	if (random == 1) {
-	    row1 = oldRow;
-	    col1 = oldCol - 1;
+	else if (dire == 2) {
+	    if (random == 0 || random == 1 ) {
+		col1++;
+	    }
+	    else {
+		col1--;
+	    }
 	}
-	if (random == 2) {
-	    row1 = oldRow + 1;
-	    col1 = oldCol;
-	}
-	if (random == 3) {
-	    row1 = oldRow - 1;
-	    col1 = oldCol;
+	else {
+	    if (random == 0 || random == 1) {
+		row1++;
+	    }
+	    else {
+		row1--;
+	    }
 	}
 	if (row1 < 0 || col1 < 0|| row1 > 9|| col1 > 9) {
 	    coorForHit();
@@ -203,17 +280,77 @@ public class AdvancedAI extends Player {
 	row = row1;
 	col = col1;
     }
-    /*
-    public void changeFinishing (Player opp) {
-	oppShipsAlive = opp.getShipsAlive();
-	if (oppShipsAliveOld > oppShipsAlive) {
-	    currentlyFinishing = false;
-	}
-	oppShipsAliveOld = opp.getShipsAlive();
-    }
-    */
-	
 
+    public int checkDirection() {
+	if (_lastShipHit.equals("Carrier")){
+	    if (carrierCoorRow.size() > 1) {
+		if (carrierCoorRow.get(0) == carrierCoorRow.get(1)) {
+		    return 2;
+		}
+		else {
+		    return 1;
+		}
+	    }
+	    else {
+		return 3;
+	    }
+	}
+	if (_lastShipHit.equals("Battleship")){
+	    if (battleshipCoorRow.size() > 1) {
+		if (battleshipCoorRow.get(0) == battleshipCoorRow.get(1)) {
+		    return 2;
+		}
+		else {
+		    return 1;
+		}
+	    }
+	    else {
+		return 3;
+	    }
+	}
+	if (_lastShipHit.equals("Cruiser")){
+	    if (cruiserCoorRow.size() > 1) {
+		if (cruiserCoorRow.get(0) == cruiserCoorRow.get(1)) {
+		    return 2;
+		}
+		else {
+		    return 1;
+		}
+	    }
+	    else {
+		return 3;
+	    }
+	}
+	if (_lastShipHit.equals("Submarine")){
+	    if (submarineCoorRow.size() > 1) {
+		if (submarineCoorRow.get(0) == submarineCoorRow.get(1)) {
+		    return 2;
+		}
+		else {
+		    return 1;
+		}
+	    }
+	    else {
+		return 3;
+	    }
+	}
+	if (_lastShipHit.equals("Destroyer")){
+	    if (destroyerCoorRow.size() > 1) {
+		if (destroyerCoorRow.get(0) == destroyerCoorRow.get(1)) {
+		    return 2;
+		}
+		else {
+		    return 1;
+		}
+	    }
+	    else {
+		return 3;
+	    }
+	}
+	return 3;
+    }
+		    
+  
     public void placeCarrier() {
 	int row = (int) (Math.random() * 10);
 	int col = (int) (Math.random() * 10);
