@@ -5,18 +5,6 @@ pd 1
 ---------------------
 Battleship: Human vs. Computer
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-devlog--
-Use keyboard shortcut to jump to end,
- replicate entry template,
- modify appropriately.
-
-zone of reflection--
-Flesh out each category whenever necessary, appropriate.
- Need not be fully filled in until end of project,
- but best done as you go along.
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
 /////////// Zone of Reflection \\\\\\\\\\\
 ------------------------------------------
 OBSTACLES OVERCOME
@@ -24,10 +12,11 @@ OBSTACLES OVERCOME
 - We were able to successful get a game going!
 - place(entershipname)()
 - Making the AdvancedAI() class implement strategies
-- Made user interface less simple
+- Made user interface understandable. 
 
 UNRESOLVED ISSUES
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- Logic in the AdvacnedAI was never implemented. Instead, we decided to take a more extensive approach in which the AI attacks a damaged ship. When we originally thought of implementations of Logic, we thought that it would work fine. But because our ship attacking approach altered in terms of damaged ships, our original ideas for Logic fell apart. 
 
 COOL STUFF LEARNED
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
