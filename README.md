@@ -9,9 +9,11 @@
   
 *Instructions:*
   1) Compile Woo.java
+    In terminal, type - javac Woo.java
   2) Execute Woo
-  3) The game has loaded up! Decide where to place your ships.
-  4) Decide whether you want to face off against a Beginner or Advanced AI.
+    In terminal, type - java Woo
+  3) Decide whether you want to face off against a Beginner or Advanced AI.
+  4) The game has loaded up! Decide where to place your ships.
   5) Start!
   6) Specify the coordinate you want to hit the enemy team.
   7) Look at the board to see if you hit and to see where your opponent attacked.
