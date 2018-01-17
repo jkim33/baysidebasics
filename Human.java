@@ -21,6 +21,7 @@ public class Human extends Player {
 		counter++;
 	    }
 	    ret += "========================================================================\n";
+	    ret += "Once you select a Row and Column (Starting Coordinate), the Orientation will determine which direction your ship should extend from the starting coordinate\n\n";
 	    ret += "Row: Can be any Integer between 1 - 10\n";
 	    ret += "Column: Can be any CAPITAL Letter between A - J\n";
 	    ret += "Orientation: Any Integer between 1 - 4.\n             1 is North, 2 is East, 3 is South, 4 is West.\n";
@@ -656,6 +657,11 @@ public class Human extends Player {
 	    attackOpponent(opponent); // recalls the method after saying that it is invalid
 	    return;
 	}
+	if (opponent._grid[row][col] == "X" || opponent._grid[row][col] == "H") { // if the user has already attacked that coordinate before
+	    System.out.println("We suggest you to hit somewhere else!");
+	    attackOpponent (opponent);
+	    return;
+	}
 	System.out.println("\n==========What Happened That Turn?=========="); // recaps what happened during that turn
 	if (opponent._grid[row][col] == "C") { // if user hits the AI's carrier
 	    opponent._grid[row][col] = "H";
@@ -716,11 +722,6 @@ public class Human extends Player {
 	    else { // if user sinks ship
 		System.out.println("You have sunk your opponent's Destroyer!");
 	    }
-	}
-	else if (opponent._grid[row][col] == "X" || opponent._grid[row][col] == "H") { // if the user has already attacked that coordinate before
-	    System.out.println("We suggest you to hit somewhere else!");
-	    attackOpponent (opponent);
-	    return;
 	}
 	else {
 	    opponent._grid[row][col] = "X";
