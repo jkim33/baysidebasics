@@ -54,23 +54,7 @@ public class Human extends Player {
 	}
 	return ret;
     }
-/*
-    public void start() {
-	System.out.println("Welcome player.\n You are about to embark in a naval war. Are you prepared for that? Please enter Yes if you are, No if you are not.");
-	String ans = Keyboard.readString();
-	if (ans != "Yes" && ans != "No") {
-	    System.out.println ("Please enter a valid answer.\nIt is case-sensitive");
-	}
-	else {
-	    if (ans == "Yes") {
-		System.out.println ("That is what we, the game developers like to hear!! Prepare for war!");
-	    }
-	    if (ans == "No") {
-		System.out.println ("That is too bad. Prepare for war!");
-	    }
-	}
-    }
-    */
+
     public int letterToInt(String let) {
 	if (let.equals("A")) {
 	    return 0;
@@ -131,7 +115,7 @@ public class Human extends Player {
 
 	if (orientation == 1) {
 	    if (row < holder) {
-		System.out.println("NO! The ships doesn't fit!");
+		System.out.println("NO! The ship doesn't fit!");
 		placeCarrier();
 		return;
 	    }
@@ -147,7 +131,7 @@ public class Human extends Player {
 	
 	if (orientation == 2) {
 	    if (col > 9 - holder) {
-		System.out.println("NO! The ships doesn't fit!");
+		System.out.println("NO! The ship doesn't fit!");
 		placeCarrier();
 		return;
 	    }
@@ -163,7 +147,7 @@ public class Human extends Player {
 	
 	if (orientation == 3) {
 	    if (row > 9 - holder) {
-		System.out.println("NO! The ships doesn't fit!");
+		System.out.println("NO! The ship doesn't fit!");
 		placeCarrier();
 		return;
 	    }
@@ -179,7 +163,7 @@ public class Human extends Player {
 	
 	if (orientation == 4) {
 	    if (col < holder) {
-		System.out.println("NO! The ships doesn't fit!");
+		System.out.println("NO! The ship doesn't fit!");
 		placeCarrier();
 		return;
 	    } 
@@ -571,7 +555,7 @@ public class Human extends Player {
 
 	if (orientation == 1) {
 	    if (row < holder) {
-		System.out.println("NO! The ships doesn't fit!");
+		System.out.println("NO! The ship doesn't fit!");
 		placeDestroyer();
 		return;
 	    }
@@ -603,7 +587,7 @@ public class Human extends Player {
 	
 	if (orientation == 3) {
 	    if (row > 9 - holder) {
-		System.out.println("NO! The ships doesn't fit!");
+		System.out.println("NO! The ship doesn't fit!");
 		placeDestroyer();
 		return;
 	    }
@@ -672,40 +656,66 @@ public class Human extends Player {
 	    attackOpponent(opponent);
 	    return;
 	}
+	System.out.println("\n==========What Happened That Turn?==========");
 	if (opponent._grid[row][col] == "C") {
 	    opponent._grid[row][col] = "H";
 	    _oppGrid[row][col] = "H";
 	    opponent.setCarrierHP(opponent.getCarrierHP() - 1);
 	    _lastShipHit = "Carrier";
-	    System.out.println("\nYou have hit the opponent's Carrier!");
+	    if (opponent.getCarrierHP() != 0) {
+		System.out.println("You have hit the opponent's Carrier!");
+	    }
+	    else {
+		System.out.println("You have sunk your opponent's Carrier!");
+	    }
 	}
 	else if (opponent._grid[row][col] == "B") {
 	    opponent._grid[row][col] = "H";
 	    _oppGrid[row][col] = "H";
 	    opponent.setBattleshipHP(opponent.getBattleshipHP() - 1);
 	    _lastShipHit = "Battleship";
-	    System.out.println("\nYou have hit the opponent's Battleship!");
+	    if (opponent.getBattleshipHP() != 0) {
+		System.out.println("You have hit the opponent's Battleship!");
+	    }
+	    else {
+		System.out.println("You have sunk your opponent's Battleship!");
+	    }
 	}
 	else if (opponent._grid[row][col] == "c") {
 	    opponent._grid[row][col] = "H";
 	    _oppGrid[row][col] = "H";
 	    opponent.setCruiserHP(opponent.getCruiserHP() - 1);
 	    _lastShipHit = "Cruiser";
-	    System.out.println("\nYou have hit the opponent's Cruiser!");
+	    if (opponent.getCruiserHP() != 0) {
+		System.out.println("You have hit the opponent's Cruiser!");
+	    }
+	    else {
+		System.out.println("You have sunk your opponent's Cruiser!");
+	    }
 	}
 	else if (opponent._grid[row][col] == "S") {
 	    opponent._grid[row][col] = "H";
 	    _oppGrid[row][col] = "H";
 	    opponent.setSubmarineHP(opponent.getSubmarineHP() - 1);
 	    _lastShipHit = "Submarine";
-	    System.out.println("\nYou have hit the opponent's Submarine!");
+	    if (opponent.getSubmarineHP() != 0) {
+		System.out.println("You have hit the opponent's Submarine!");
+	    }
+	    else {
+		System.out.println("You have sunk your opponent's Submarine!");
+	    }
 	}
 	else if (opponent._grid[row][col] == "D") {
 	    opponent._grid[row][col] = "H";
 	    _oppGrid[row][col] = "H";
 	    opponent.setDestroyerHP(opponent.getDestroyerHP() - 1);
 	    _lastShipHit = "Destroyer";
-	    System.out.println("\nYou have hit the opponent's Destroyer!");
+	    if (opponent.getDestroyerHP() != 0) {
+		System.out.println("You have hit the opponent's Destroyer!");
+	    }
+	    else {
+		System.out.println("You have sunk your opponent's Destroyer!");
+	    }
 	}
 	else if (opponent._grid[row][col] == "X" || opponent._grid[row][col] == "H") {
 	    System.out.println("We suggest you to hit somewhere else!");

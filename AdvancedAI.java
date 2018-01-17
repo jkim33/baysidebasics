@@ -134,6 +134,7 @@ public class AdvancedAI extends Player {
 	    System.out.println("Your Opponent has completely missed!");
 	}
 	turnCount+= 1;
+	System.out.println("============================================");
     }
 
     public int evenOrOdd (int r) {
