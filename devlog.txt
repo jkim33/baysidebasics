@@ -23,15 +23,16 @@ OBSTACLES OVERCOME
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 - We were able to successful get a game going!
 - place(entershipname)()
+- Making the AdvancedAI() class implement strategies
+- Made user interface less simple
 
 UNRESOLVED ISSUES
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-- Currently, the AdvancedAI is not developed... well at all.
-- Currently, a better user interface is needed.
 
 COOL STUFF LEARNED
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 - Characters (at least the ones we used) are all equal to width. So everything looks even on the grid.
+- How to transform strategies from a real-life game into working code.
 
 MID-DEVELOPMENT DESIGN CHANGES
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -112,6 +113,6 @@ Derek Song :: Helped Jason go through the process in a rigorous Skype call.
 
 2018-01-16
 --------------------------------------------------------------
-Jason Kim ::
-Derek Song ::
+Jason Kim :: With Derek, on another rigorous Skype call, developed and elaborated on the AdvancedAI class. 
+Derek Song :: Worked with Jason on AdvancedAI and improved user interface as well. Continuously played the game with Jason in search for errors.
 ==============================================================
